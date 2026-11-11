@@ -46,6 +46,8 @@ import matplotlib.pyplot as plt  # noqa: E402
 # ==========================================================
 # 第一部分：环境信息（对应"观测：环境每步返回四个数"）
 # ==========================================================
+
+
 def print_env_info(env):
     print("=" * 56)
     print("CartPole-v1 环境信息")
@@ -153,7 +155,9 @@ def collect_rollout(
             if terminated:
                 next_value = 0.0
             else:
-                next_tensor = torch.as_tensor(next_obs, dtype=torch.float32, device=device)
+                next_tensor = torch.as_tensor(
+                    next_obs, dtype=torch.float32, device=device
+                )
                 _, next_value = model(next_tensor)
                 next_value = next_value.item()
 
@@ -208,7 +212,9 @@ def compute_gae(transitions, gamma=0.99, lam=0.95):
         raw_advantages.insert(0, gae)
 
     raw_advantages = torch.tensor(raw_advantages, dtype=torch.float32)
-    values = torch.tensor([t["value"] for t in transitions], dtype=torch.float32)
+    values = torch.tensor(
+        [t["value"] for t in transitions], dtype=torch.float32
+    )
 
     # Critic 学的是未归一化的回报目标，归一化只用于策略损失
     returns = raw_advantages + values
@@ -237,11 +243,15 @@ def ppo_update(
 ):
     obs = np.array([t["obs"] for t in transitions], dtype=np.float32)
     actions = np.array([t["action"] for t in transitions], dtype=np.int64)
-    old_log_probs = np.array([t["log_prob"] for t in transitions], dtype=np.float32)
+    old_log_probs = np.array(
+        [t["log_prob"] for t in transitions], dtype=np.float32
+    )
 
     obs = torch.as_tensor(obs, dtype=torch.float32, device=device)
     actions = torch.as_tensor(actions, dtype=torch.long, device=device)
-    old_log_probs = torch.as_tensor(old_log_probs, dtype=torch.float32, device=device)
+    old_log_probs = torch.as_tensor(
+        old_log_probs, dtype=torch.float32, device=device
+    )
     advantages = advantages.to(device)
     returns = returns.to(device)
 
@@ -255,7 +265,7 @@ def ppo_update(
     for _ in range(epochs):
         indices = np.random.permutation(len(transitions))
         for start in range(0, len(transitions), batch_size):
-            idx = indices[start : start + batch_size]
+            idx = indices[start:start + batch_size]
 
             batch_obs = obs[idx]
             batch_actions = actions[idx]
@@ -270,7 +280,10 @@ def ppo_update(
             # 概率比与裁剪目标
             ratio = torch.exp(new_log_probs - batch_old_log_probs)
             surr1 = ratio * batch_advantages
-            surr2 = torch.clamp(ratio, 1 - clip_eps, 1 + clip_eps) * batch_advantages
+            surr2 = (
+                torch.clamp(ratio, 1 - clip_eps, 1 + clip_eps)
+                * batch_advantages
+            )
             policy_loss = -torch.min(surr1, surr2).mean()
 
             # Critic 的价值损失
@@ -279,7 +292,11 @@ def ppo_update(
             # 策略熵：鼓励探索
             entropy = dist.entropy().mean()
 
-            loss = policy_loss + value_coef * value_loss - entropy_coef * entropy
+            loss = (
+                policy_loss
+                + value_coef * value_loss
+                - entropy_coef * entropy
+            )
 
             optimizer.zero_grad()
             loss.backward()
@@ -290,7 +307,8 @@ def ppo_update(
                 log_ratio = new_log_probs - batch_old_log_probs
                 # 非负的 KL 近似（与 SB3 的 approx_kl 一致）
                 total_kl += ((log_ratio.exp() - 1) - log_ratio).mean().item()
-                total_clip_frac += ((ratio - 1.0).abs() > clip_eps).float().mean().item()
+                clipped = (ratio - 1.0).abs() > clip_eps
+                total_clip_frac += clipped.float().mean().item()
                 total_policy_loss += policy_loss.item()
                 total_value_loss += value_loss.item()
                 total_entropy += entropy.item()
@@ -313,25 +331,49 @@ def resolve_device(choice="auto"):
         return torch.device(choice)
     if torch.cuda.is_available():
         return torch.device("cuda")
-    if getattr(torch.backends, "mps", None) and torch.backends.mps.is_available():
+    mps_available = (
+        getattr(torch.backends, "mps", None) is not None
+        and torch.backends.mps.is_available()
+    )
+    if mps_available:
         return torch.device("mps")
     return torch.device("cpu")
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="纯 PyTorch PPO 训练 CartPole-v1")
+    parser = argparse.ArgumentParser(
+        description="纯 PyTorch PPO 训练 CartPole-v1"
+    )
     parser.add_argument("--seed", type=int, default=42, help="随机种子")
-    parser.add_argument("--iterations", type=int, default=40, help="PPO 迭代轮数")
-    parser.add_argument("--steps-per-rollout", type=int, default=2048, help="每轮采样步数")
-    parser.add_argument("--gamma", type=float, default=0.99, help="折扣因子")
-    parser.add_argument("--gae-lambda", type=float, default=0.95, help="GAE 的 lambda")
-    parser.add_argument("--clip-eps", type=float, default=0.2, help="裁剪范围")
-    parser.add_argument("--epochs", type=int, default=10, help="每轮数据复用次数")
-    parser.add_argument("--batch-size", type=int, default=64, help="小批次大小")
-    parser.add_argument("--lr", type=float, default=3e-4, help="初始学习率（线性衰减到 0）")
-    parser.add_argument("--eval-episodes", type=int, default=20, help="训练后的独立评估回合数")
     parser.add_argument(
-        "--device", choices=["auto", "cuda", "mps", "cpu"], default="auto", help="训练设备"
+        "--iterations", type=int, default=40, help="PPO 迭代轮数"
+    )
+    parser.add_argument(
+        "--steps-per-rollout",
+        type=int,
+        default=2048,
+        help="每轮采样步数",
+    )
+    parser.add_argument("--gamma", type=float, default=0.99, help="折扣因子")
+    parser.add_argument(
+        "--gae-lambda", type=float, default=0.95, help="GAE 的 lambda"
+    )
+    parser.add_argument("--clip-eps", type=float, default=0.2, help="裁剪范围")
+    parser.add_argument(
+        "--epochs", type=int, default=10, help="每轮数据复用次数"
+    )
+    parser.add_argument("--batch-size", type=int, default=64, help="小批次大小")
+    parser.add_argument(
+        "--lr", type=float, default=3e-4, help="初始学习率（线性衰减到 0）"
+    )
+    parser.add_argument(
+        "--eval-episodes", type=int, default=20, help="训练后的独立评估回合数"
+    )
+    parser.add_argument(
+        "--device",
+        choices=["auto", "cuda", "mps", "cpu"],
+        default="auto",
+        help="训练设备",
     )
     parser.add_argument(
         "--log-csv",
@@ -355,9 +397,13 @@ def evaluate(model, env, device, episodes, seed):
         truncated = False
         score = 0.0
         while not (done or truncated):
-            obs_tensor = torch.as_tensor(obs, dtype=torch.float32, device=device)
+            obs_tensor = torch.as_tensor(
+                obs, dtype=torch.float32, device=device
+            )
             with torch.no_grad():
-                action, _, _ = model.get_action(obs_tensor, deterministic=True)
+                action, _, _ = model.get_action(
+                    obs_tensor, deterministic=True
+                )
             obs, reward, done, truncated, _ = env.step(action.item())
             score += float(reward)
         scores.append(score)
@@ -453,7 +499,8 @@ def train():
         if var_returns < 1e-6:
             explained_variance = 0.0
         else:
-            explained_variance = 1.0 - float(np.var(return_values - rollout_values)) / var_returns
+            residual_var = float(np.var(return_values - rollout_values))
+            explained_variance = 1.0 - residual_var / var_returns
 
         # 统计
         mean_reward_rollout = float(np.mean(ep_rewards)) if ep_rewards else 0.0
@@ -528,10 +575,16 @@ def train():
                 truncated = False
                 score = 0.0
                 while not (done or truncated):
-                    obs_tensor = torch.as_tensor(obs, dtype=torch.float32, device=device)
+                    obs_tensor = torch.as_tensor(
+                        obs, dtype=torch.float32, device=device
+                    )
                     with torch.no_grad():
-                        action, _, _ = model.get_action(obs_tensor, deterministic=True)
-                    obs, reward, done, truncated, _ = vis_env.step(action.item())
+                        action, _, _ = model.get_action(
+                            obs_tensor, deterministic=True
+                        )
+                    obs, reward, done, truncated, _ = vis_env.step(
+                        action.item()
+                    )
                     score += float(reward)
                 print(f"  演示回合 {ep + 1} 得分: {score}")
             vis_env.close()
@@ -545,14 +598,40 @@ def train():
 # ==========================================================
 # 第七部分：画训练曲线（奖励 + 四个辅助指标）
 # ==========================================================
+def _setup_cjk_font():
+    """尽量找一个中文字体，避免图里的中文变成方框。"""
+    from matplotlib import font_manager
+
+    candidates = [
+        "Noto Sans CJK SC",
+        "Noto Sans CJK TC",
+        "Noto Sans CJK JP",
+        "Source Han Sans SC",
+        "WenQuanYi Micro Hei",
+        "SimHei",
+        "Microsoft YaHei",
+    ]
+    available = {f.name for f in font_manager.fontManager.ttflist}
+    for name in candidates:
+        if name in available:
+            plt.rcParams["font.sans-serif"] = [name]
+            break
+    plt.rcParams["axes.unicode_minus"] = False
+
+
 def plot_curves(metric_rows, output_dir):
+    _setup_cjk_font()
     iterations = [row["iteration"] for row in metric_rows]
     rewards = [row["mean_episode_reward"] for row in metric_rows]
-    rewards_rollout = [row["mean_episode_reward_rollout"] for row in metric_rows]
+    rewards_rollout = [
+        row["mean_episode_reward_rollout"] for row in metric_rows
+    ]
 
     # 图 1：回合奖励
     fig, ax = plt.subplots(figsize=(8, 4.5))
-    ax.plot(iterations, rewards, marker="o", markersize=3, label="100 回合滑动平均")
+    ax.plot(
+        iterations, rewards, marker="o", markersize=3, label="100 回合滑动平均"
+    )
     ax.plot(
         iterations,
         rewards_rollout,
@@ -583,7 +662,12 @@ def plot_curves(metric_rows, output_dir):
         ("clip_fraction", "裁剪比例", axes[1][1]),
     ]
     for key, title, ax in specs:
-        ax.plot(iterations, [row[key] for row in metric_rows], marker="o", markersize=3)
+        ax.plot(
+            iterations,
+            [row[key] for row in metric_rows],
+            marker="o",
+            markersize=3,
+        )
         ax.set_title(title)
         ax.set_xlabel("迭代轮次")
         ax.grid(alpha=0.3)
