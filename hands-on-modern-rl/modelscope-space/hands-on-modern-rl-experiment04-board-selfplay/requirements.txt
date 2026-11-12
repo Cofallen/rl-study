@@ -1,0 +1,6 @@
+gradio>=6.17,<7
+open-spiel>=1.6,<2
+numpy>=1.26,<3
+matplotlib>=3.8,<4
+imageio>=2.34,<3
+Pillow>=10,<13

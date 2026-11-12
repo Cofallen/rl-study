@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="600" viewBox="0 0 1080 600" role="img" aria-labelledby="title desc">
+  <title id="title">Deep Research 可复现评测协议</title>
+  <desc id="desc">冻结题目、固定环境与预算，运行智能体并保存轨迹和页面快照，最后分别评估答案、证据、过程、成本与可靠性。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#64748b;stroke-width:2;rx:16}
+      .blue{fill:#eff6ff;stroke:#3b82f6;stroke-width:2;rx:16}
+      .green{fill:#f0fdf4;stroke:#22c55e;stroke-width:2;rx:16}
+      .orange{fill:#fff7ed;stroke:#f97316;stroke-width:2;rx:16}
+      .line{fill:none;stroke:#64748b;stroke-width:2.2;marker-end:url(#arrow)}
+      .title{font:700 23px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#0f172a}
+      .label{font:650 18px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#0f172a}
+      .small{font:15px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#475569}
+    </style>
+  </defs>
+  <text x="540" y="40" text-anchor="middle" class="title">一条可复现的 Deep Research 评测流水线</text>
+
+  <rect x="30" y="110" width="200" height="150" class="blue"/>
+  <text x="130" y="150" text-anchor="middle" class="label">1. 冻结任务</text>
+  <text x="130" y="185" text-anchor="middle" class="small">问题与答案别名</text>
+  <text x="130" y="215" text-anchor="middle" class="small">参考证据与日期</text>
+  <text x="130" y="240" text-anchor="middle" class="small">训练 / 测试划分</text>
+
+  <path d="M230 185 L280 185" class="line"/>
+
+  <rect x="280" y="110" width="200" height="150" class="box"/>
+  <text x="380" y="150" text-anchor="middle" class="label">2. 固定条件</text>
+  <text x="380" y="185" text-anchor="middle" class="small">搜索与浏览器版本</text>
+  <text x="380" y="215" text-anchor="middle" class="small">工具权限</text>
+  <text x="380" y="240" text-anchor="middle" class="small">步数 · token · 时间</text>
+
+  <path d="M480 185 L530 185" class="line"/>
+
+  <rect x="530" y="110" width="200" height="150" class="green"/>
+  <text x="630" y="150" text-anchor="middle" class="label">3. 运行轨迹</text>
+  <text x="630" y="185" text-anchor="middle" class="small">搜索 · 打开 · 阅读</text>
+  <text x="630" y="215" text-anchor="middle" class="small">保存页面快照</text>
+  <text x="630" y="240" text-anchor="middle" class="small">提交答案与引用</text>
+
+  <path d="M730 185 L780 185" class="line"/>
+
+  <rect x="780" y="110" width="270" height="150" class="orange"/>
+  <text x="915" y="150" text-anchor="middle" class="label">4. 分层评分</text>
+  <text x="915" y="185" text-anchor="middle" class="small">答案 · 引用 · 过程</text>
+  <text x="915" y="215" text-anchor="middle" class="small">成本 · 可靠性</text>
+  <text x="915" y="240" text-anchor="middle" class="small">保留分项与判断理由</text>
+
+  <rect x="180" y="350" width="720" height="125" class="box"/>
+  <text x="540" y="390" text-anchor="middle" class="label">失败图集：把总分拆成可以修复的问题</text>
+  <text x="540" y="425" text-anchor="middle" class="small">未找到页面 · 抽取失败 · 推理错误 · 引用错位 · 超预算 · 环境波动</text>
+  <text x="540" y="452" text-anchor="middle" class="small">每类保留成功与失败轨迹，修改后只重跑对应切片</text>
+
+  <path d="M915 260 C915 310, 840 330, 800 350" class="line"/>
+  <path d="M280 412 C120 412, 110 185, 30 185" class="line"/>
+  <text x="140" y="525" text-anchor="start" class="small">根据稳定失败更新题集、Harness 或模型，再进行下一轮评测</text>
+</svg>

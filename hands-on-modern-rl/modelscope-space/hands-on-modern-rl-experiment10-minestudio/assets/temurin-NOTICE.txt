@@ -1,0 +1,17 @@
+Eclipse Temurin JRE 8 redistribution notice
+
+The live ModelScope Studio may include the unmodified Eclipse Temurin
+OpenJDK8U JRE archive downloaded from the official Adoptium release service:
+
+https://api.adoptium.net/v3/binary/latest/8/ga/linux/x64/jre/hotspot/normal/eclipse
+
+Release file: OpenJDK8U-jre_x64_linux_hotspot_8u502b07.tar.gz
+SHA-256: f1a7bea0804bfa5627dac412fe7a0d751c4228592e356d6a32a30da54a48ed7a
+
+Eclipse Temurin is a trademark of the Eclipse Foundation. The program and
+accompanying materials are made available under GPL-2.0 with the Classpath
+Exception. The unmodified archive retains its upstream NOTICE, LICENSE,
+ASSEMBLY_EXCEPTION, and third-party license files.
+
+Project: https://projects.eclipse.org/projects/adoptium.temurin
+Source: https://github.com/adoptium/temurin-build

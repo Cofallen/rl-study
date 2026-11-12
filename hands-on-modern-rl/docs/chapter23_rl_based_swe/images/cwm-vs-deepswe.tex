@@ -1,0 +1,13 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{fontspec}
+\setmainfont{Songti SC}
+\usetikzlibrary{arrows.meta,positioning}
+\begin{document}
+\begin{tikzpicture}[>=Stealth,every node/.style={align=center,font=\small},box/.style={rounded corners,draw=black!70,fill=black!3,minimum height=16mm},main/.style={box,draw=blue!60,fill=blue!5,minimum width=68mm,minimum height=28mm}]
+\node[box,minimum width=50mm] (env) {可执行软件环境\\Python 解释器 / Docker / 测试};
+\node[main,below left=16mm and 6mm of env] (cwm) {CWM：学习软件世界的规律\\观察—动作轨迹 $\to$ 中期训练\\多任务可验证 RL $\to$ 开放权重模型};
+\node[main,below right=16mm and 6mm of env] (deep) {DeepSWE：训练长程代码智能体\\R2E-Gym 任务 $\to$ 长轨迹交互\\真实测试反馈 $\to$ 纯 RL};
+\node[box,draw=brown!65,fill=brown!5,below=14mm of env,yshift=-34mm,minimum width=105mm] (ext) {教学扩展：显式转移模型、价值模型、MCTS / Beam Search（需要单独实验验证）};
+\draw[->] (env)--(cwm); \draw[->] (env)--(deep); \draw[->,dashed,brown!70] (cwm)--(ext); \draw[->,dashed,brown!70] (deep)--(ext);
+\end{tikzpicture}
+\end{document}

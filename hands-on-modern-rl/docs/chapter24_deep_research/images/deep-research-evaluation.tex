@@ -1,0 +1,26 @@
+\documentclass[border=10pt,tikz]{standalone}
+\usepackage{tikz}
+\usepackage{fontspec}
+\setmainfont{Songti SC}
+\setsansfont{Heiti SC}
+\usetikzlibrary{arrows.meta,positioning}
+
+\begin{document}
+\begin{tikzpicture}[
+  box/.style={draw=black!70,fill=black!3,rounded corners=7pt,minimum width=3.1cm,minimum height=1.25cm,align=center,font=\small},
+  metric/.style={draw=blue!55!black,fill=blue!4,rounded corners=7pt,minimum width=2.9cm,minimum height=1.05cm,align=center,font=\small},
+  arrow/.style={-{Stealth[length=6pt,width=5pt]},line width=1pt,black!65,shorten >=3pt,shorten <=3pt}
+]
+\node[box] (q) {研究问题};
+\node[box,right=1.2cm of q] (agent) {搜索与阅读\\[-1pt]{\footnotesize 产生浏览轨迹}};
+\node[box,right=1.2cm of agent] (answer) {最终答案\\[-1pt]{\footnotesize 附引用}};
+\node[metric,below=1.15cm of agent,xshift=-3.0cm] (process) {过程是否真实\\步骤与成本};
+\node[metric,below=1.15cm of agent] (evidence) {证据是否支持\\关键论断};
+\node[metric,below=1.15cm of agent,xshift=3.0cm] (correct) {答案是否正确\\语义是否等价};
+\draw[arrow] (q) -- (agent);
+\draw[arrow] (agent) -- (answer);
+\draw[arrow] (agent.south) |- (process.north);
+\draw[arrow] (answer.south) |- (evidence.north);
+\draw[arrow] (answer.south) |- (correct.north);
+\end{tikzpicture}
+\end{document}

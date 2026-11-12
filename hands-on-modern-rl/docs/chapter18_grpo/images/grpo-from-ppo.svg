@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+  <title id="title">GRPO 从 PPO 中替换 Critic 基线</title>
+  <desc id="desc">图示 PPO 的 Critic 基线如何被 GRPO 的组内平均奖励替代。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+    </marker>
+    <filter id="shadow" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <rect width="960" height="430" fill="#f8fafc" />
+  <text x="480" y="42" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="24" font-weight="700" fill="#0f172a">
+    GRPO 的改动点：保留 PPO 裁剪，替换 Critic 基线
+  </text>
+
+  <g filter="url(#shadow)">
+    <rect x="55" y="92" width="250" height="132" rx="12" fill="#fff7ed" stroke="#fb923c" />
+    <text x="180" y="124" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="18" font-weight="700" fill="#9a3412">PPO</text>
+    <text x="180" y="154" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="14" fill="#7c2d12">一个回答得到奖励 R</text>
+    <text x="180" y="180" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="14" fill="#7c2d12">Critic 预测 V(s)</text>
+    <text x="180" y="206" text-anchor="middle" font-family="monospace" font-size="15" fill="#7c2d12">A = R - V(s)</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="355" y="92" width="250" height="132" rx="12" fill="#ecfeff" stroke="#22d3ee" />
+    <text x="480" y="124" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="18" font-weight="700" fill="#155e75">GRPO</text>
+    <text x="480" y="154" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="14" fill="#155e75">同一题采样多个回答</text>
+    <text x="480" y="180" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="14" fill="#155e75">用组内平均分当基线</text>
+    <text x="480" y="206" text-anchor="middle" font-family="monospace" font-size="15" fill="#155e75">A_i = (r_i - mean) / std</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="655" y="92" width="250" height="132" rx="12" fill="#ecfdf5" stroke="#34d399" />
+    <text x="780" y="124" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="18" font-weight="700" fill="#065f46">共同保留</text>
+    <text x="780" y="154" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="14" fill="#065f46">旧策略采样</text>
+    <text x="780" y="180" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="14" fill="#065f46">ratio = pi_new / pi_old</text>
+    <text x="780" y="206" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="14" fill="#065f46">clip 限制更新幅度</text>
+  </g>
+
+  <line x1="305" y1="158" x2="340" y2="158" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)" />
+  <line x1="605" y1="158" x2="640" y2="158" stroke="#334155" stroke-width="2.2" marker-end="url(#arrow)" />
+
+  <g>
+    <rect x="110" y="280" width="740" height="78" rx="14" fill="#ffffff" stroke="#cbd5e1" />
+    <text x="480" y="310" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="16" font-weight="700" fill="#0f172a">一句话看差异</text>
+    <text x="480" y="340" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif" font-size="15" fill="#334155">
+      PPO 问“这个回答比 Critic 预期好吗？”；GRPO 问“这个回答比同题其他回答好吗？”
+    </text>
+  </g>
+</svg>

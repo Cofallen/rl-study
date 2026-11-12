@@ -1,0 +1,6 @@
+# Chapter 1: CartPole experiment environment dependencies
+gymnasium[classic-control]>=0.29.0
+stable-baselines3>=2.0.0
+torch>=2.0.0
+swanlab[dashboard]>=0.3.0
+matplotlib>=3.8.0

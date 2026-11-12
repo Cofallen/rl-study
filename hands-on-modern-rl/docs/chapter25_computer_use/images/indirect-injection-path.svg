@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="440" viewBox="0 0 1120 440" role="img" aria-labelledby="title desc">
+  <title id="title">间接提示注入的传播路径与阻断点</title>
+  <desc id="desc">恶意指令藏在 PDF 中，经模型规划进入工具调用；内容边界、能力代理和高风险确认可阻断传播。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker>
+    <marker id="redarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#a52a2a"/></marker>
+  </defs>
+  <g font-family="Songti SC, Noto Serif CJK SC, serif" text-anchor="middle" fill="#202124">
+    <g stroke-width="2">
+      <rect x="30" y="60" width="205" height="100" rx="14" fill="#f5f8ff" stroke="#2457a7"/>
+      <rect x="285" y="60" width="205" height="100" rx="14" fill="#fff6f6" stroke="#a52a2a"/>
+      <rect x="540" y="60" width="205" height="100" rx="14" fill="#fafafa" stroke="#555"/>
+      <rect x="795" y="60" width="285" height="100" rx="14" fill="#fff6f6" stroke="#a52a2a"/>
+    </g>
+    <g font-size="21">
+      <text x="133" y="98">用户目标</text>
+      <text x="388" y="98">不可信 PDF</text>
+      <text x="643" y="98">模型生成动作</text>
+      <text x="938" y="98">邮箱 / 文件 / 支付工具</text>
+    </g>
+    <g font-size="16" fill="#555">
+      <text x="133" y="128">“总结这份文件”</text>
+      <text x="388" y="124">正文 + “转发邮件”</text>
+      <text x="643" y="128">send_email(...)</text>
+      <text x="938" y="128">真实世界副作用</text>
+    </g>
+
+    <g fill="none" stroke="#a52a2a" stroke-width="2.4" marker-end="url(#redarrow)">
+      <path d="M235 110 H275"/>
+      <path d="M490 110 H530"/>
+      <path d="M745 110 H785"/>
+    </g>
+
+    <g stroke="#2457a7" fill="#f5f8ff" stroke-width="2">
+      <rect x="170" y="265" width="235" height="105" rx="14"/>
+      <rect x="445" y="265" width="235" height="105" rx="14"/>
+      <rect x="720" y="265" width="235" height="105" rx="14"/>
+    </g>
+    <g font-size="20">
+      <text x="288" y="301">阻断点 1：内容边界</text>
+      <text x="563" y="301">阻断点 2：能力代理</text>
+      <text x="838" y="301">阻断点 3：用户确认</text>
+    </g>
+    <g font-size="16" fill="#555">
+      <text x="288" y="331">PDF 只能提供数据</text>
+      <text x="288" y="354">不能扩大用户目标</text>
+      <text x="563" y="331">检查动作、对象与权限</text>
+      <text x="563" y="354">默认拒绝跨应用越权</text>
+      <text x="838" y="331">发送、删除、支付前</text>
+      <text x="838" y="354">展示具体副作用</text>
+    </g>
+    <g fill="none" stroke="#555" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#arrow)">
+      <path d="M388 170 V255"/>
+      <path d="M643 170 L585 255"/>
+      <path d="M938 170 L855 255"/>
+    </g>
+  </g>
+</svg>

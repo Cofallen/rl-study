@@ -1,0 +1,8 @@
+The Minecraft JPG task thumbnail is derived from the official MineStudio
+simulator recording screenshot:
+
+https://github.com/CraftJarvis/MineStudio/blob/master/docs/source/_static/image/record.png
+
+The same authentic simulator capture is reused across the four task cards;
+the card labels distinguish the recipes. Upstream project: MineStudio.
+Distributed by the upstream project under the MIT License.

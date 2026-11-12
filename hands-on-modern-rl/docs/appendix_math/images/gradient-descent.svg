@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img" aria-labelledby="title desc">
+  <title id="title">Gradient Descent on Elliptic Level Sets</title>
+  <desc id="desc">
+    Elliptic contour lines for a convex function, a starting point theta zero, a red gradient arrow pointing uphill, and several green negative-gradient steps descending to the minimum.
+  </desc>
+
+  <defs>
+    <marker id="arrow-red" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#ff5a5f"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#0b8a18"/>
+    </marker>
+  </defs>
+
+  <rect width="560" height="340" fill="#ffffff"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif">
+    <text x="280" y="34" text-anchor="middle" font-size="23" fill="#111111" font-weight="600">Gradient Descent</text>
+
+    <ellipse cx="290" cy="160" rx="198" ry="119" fill="none" stroke="#e1e5ff" stroke-width="2"/>
+    <ellipse cx="290" cy="160" rx="168" ry="101" fill="none" stroke="#bec5ff" stroke-width="2.1"/>
+    <ellipse cx="290" cy="160" rx="135" ry="81" fill="none" stroke="#97a0ff" stroke-width="2.2"/>
+    <ellipse cx="290" cy="160" rx="101" ry="61" fill="none" stroke="#6f7dff" stroke-width="2.3"/>
+    <ellipse cx="290" cy="160" rx="63" ry="38" fill="none" stroke="#4657ff" stroke-width="2.5"/>
+
+    <text x="405" y="58" font-size="20" fill="#9aa3ff" font-style="italic">
+      f(θ) = c
+    </text>
+
+    <circle cx="290" cy="160" r="7.5" fill="#4c5cf0"/>
+    <text x="308" y="181" font-size="20" fill="#4c5cf0">min</text>
+
+    <circle cx="175" cy="82" r="6.5" fill="#ff4d4f"/>
+    <text x="147" y="90" font-size="19" fill="#ff4d4f" font-style="italic">
+      θ<tspan baseline-shift="sub" font-size="70%">0</tspan>
+    </text>
+
+    <line
+      x1="175"
+      y1="82"
+      x2="144.3"
+      y2="24.2"
+      stroke="#ff5a5f"
+      stroke-width="2.4"
+      stroke-dasharray="8 7"
+      stroke-linecap="round"
+      marker-end="url(#arrow-red)"
+    />
+    <text x="120" y="20" font-size="21" fill="#ff5a5f" font-style="italic">∇f</text>
+
+    <line x1="175" y1="82" x2="199.5" y2="128.2" stroke="#0b8a18" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow-green)"/>
+    <line x1="199.5" y1="128.2" x2="218.8" y2="147.1" stroke="#0b8a18" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow-green)"/>
+    <line x1="218.8" y1="147.1" x2="234.0" y2="154.7" stroke="#0b8a18" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow-green)"/>
+    <line x1="234.0" y1="154.7" x2="246.0" y2="157.9" stroke="#0b8a18" stroke-width="2.8" stroke-linecap="round" marker-end="url(#arrow-green)"/>
+
+    <text x="214" y="72" font-size="21" fill="#0b8a18" font-style="italic">−∇f</text>
+
+    <text x="280" y="310" text-anchor="middle" font-size="24" fill="#111111" font-style="italic">
+      θ ← θ − α∇f(θ)
+    </text>
+  </g>
+</svg>

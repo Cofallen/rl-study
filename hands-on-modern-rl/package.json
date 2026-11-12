@@ -1,0 +1,63 @@
+{
+  "name": "hands-on-modern-rl",
+  "version": "1.0.0",
+  "description": "现代强化学习实战——从代码到原理",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run assets:optimize && vitepress dev docs",
+    "dev:fast": "vitepress dev docs",
+    "build": "npm run verify:notebooks && npm run assets:optimize && npm run sitemap && vitepress build docs",
+    "build:force": "npm run verify:notebooks && npm run assets:optimize && npm run sitemap && vitepress build docs --force",
+    "pdf:build": "node scripts/build-pdf.mjs",
+    "epub:build": "node scripts/build-epub.mjs",
+    "preview": "vitepress preview docs",
+    "assets:optimize": "node scripts/optimize-assets.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint docs/.vitepress/theme",
+    "lint:fix": "eslint docs/.vitepress/theme --fix",
+    "verify": "bash scripts/verify.sh",
+    "verify:bilingual": "node scripts/check-bilingual-sync.mjs",
+    "verify:english": "node scripts/check-english-quality.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "fix:headings": "node scripts/fix-heading-numbers.mjs",
+    "verify:notebooks": "python3 scripts/verify_chapter_notebooks.py && python3 scripts/verify_online_experiment_notebooks.py && python3 scripts/verify_localized_notebooks.py && python3 scripts/verify_notebook_results.py"
+  },
+  "keywords": [
+    "walkinglabs",
+    "course-template",
+    "vitepress",
+    "documentation"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:walkinglabs/hands-on-modern-rl.git"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "archiver": "^7.0.1",
+    "eslint": "^9.0.0",
+    "eslint-plugin-vue": "^9.30.0",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.2.0",
+    "prettier": "^3.7.4",
+    "puppeteer-core": "^24.42.0",
+    "vue-eslint-parser": "^9.4.3"
+  },
+  "dependencies": {
+    "katex": "^0.16.45",
+    "lucide-vue-next": "^1.0.0",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "medium-zoom": "^1.1.0",
+    "mermaid": "^11.14.0",
+    "reka-ui": "^2.9.7",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-mermaid": "^2.0.17",
+    "vue": "^3.5.0"
+  }
+}

@@ -1,0 +1,14 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{fontspec}
+\setmainfont{Songti SC}
+\usetikzlibrary{arrows.meta,positioning}
+\begin{document}
+\begin{tikzpicture}[node distance=10mm,>=Stealth,every node/.style={align=center,font=\small},box/.style={rounded corners,draw=black!70,fill=black!3,minimum height=20mm},role/.style={box,draw=blue!60,fill=blue!5,minimum height=28mm}]
+\node[box] (repo) {沙箱仓库\\原始测试可运行};
+\node[role,right=of repo] (inject) {缺陷注入阶段\\修改代码并生成测试补丁\\由当前模型承担};
+\node[box,right=of inject] (check) {任务有效性检查\\原代码通过，缺陷代码失败};
+\node[role,right=of check] (repair) {缺陷修复阶段\\读取仓库与失败测试\\仍由同一个模型承担};
+\draw[->] (repo)--(inject); \draw[->] (inject)--(check); \draw[->] (check)--(repair);
+\draw[->,dashed,brown!70] (repair.south) -- ++(0,-10mm) -| node[below,pos=.25]{测试奖励更新策略并筛选新任务} (inject.south);
+\end{tikzpicture}
+\end{document}

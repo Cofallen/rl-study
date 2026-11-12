@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="560" viewBox="0 0 1040 560" role="img" aria-labelledby="title desc">
+  <title id="title">SWE-RL 训练任务的数据来源与验证闭环</title>
+  <desc id="desc">真实修复、软件演化记录和合成缺陷经过任务整理进入隔离仓库，代码智能体产生补丁，测试验证器生成奖励，再用于策略更新。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .box { fill: #f8fafc; stroke: #64748b; stroke-width: 2; rx: 16; }
+      .source { fill: #eff6ff; stroke: #3b82f6; stroke-width: 2; rx: 14; }
+      .train { fill: #f0fdf4; stroke: #22c55e; stroke-width: 2; rx: 16; }
+      .warn { fill: #fff7ed; stroke: #f97316; stroke-width: 2; rx: 14; }
+      .line { fill: none; stroke: #64748b; stroke-width: 2.2; marker-end: url(#arrow); }
+      .title { font: 700 22px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .label { font: 650 18px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .small { font: 15px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text x="520" y="38" text-anchor="middle" class="title">从软件历史到一次 SWE-RL 策略更新</text>
+
+  <rect x="35" y="78" width="225" height="98" class="source"/>
+  <text x="147" y="112" text-anchor="middle" class="label">真实 issue 与 PR</text>
+  <text x="147" y="140" text-anchor="middle" class="small">SWE-bench：真实评测</text>
+
+  <rect x="35" y="214" width="225" height="98" class="source"/>
+  <text x="147" y="248" text-anchor="middle" class="label">软件演化记录</text>
+  <text x="147" y="276" text-anchor="middle" class="small">SWE-RL：恢复训练信号</text>
+
+  <rect x="35" y="350" width="225" height="98" class="source"/>
+  <text x="147" y="384" text-anchor="middle" class="label">合成缺陷 / 自博弈</text>
+  <text x="147" y="412" text-anchor="middle" class="small">SWE-smith 与 SSR</text>
+
+  <path d="M260 127 C315 127, 305 222, 355 222" class="line"/>
+  <path d="M260 263 L355 263" class="line"/>
+  <path d="M260 399 C315 399, 305 304, 355 304" class="line"/>
+
+  <rect x="355" y="177" width="210" height="170" class="box"/>
+  <text x="460" y="214" text-anchor="middle" class="label">标准化训练任务</text>
+  <text x="460" y="248" text-anchor="middle" class="small">仓库快照 + issue</text>
+  <text x="460" y="276" text-anchor="middle" class="small">隔离环境 + 测试</text>
+  <text x="460" y="304" text-anchor="middle" class="small">统一状态与动作记录</text>
+
+  <path d="M565 262 L630 262" class="line"/>
+
+  <rect x="630" y="177" width="175" height="170" class="train"/>
+  <text x="718" y="214" text-anchor="middle" class="label">智能体 rollout</text>
+  <text x="718" y="248" text-anchor="middle" class="small">读取 · 搜索 · 编辑</text>
+  <text x="718" y="276" text-anchor="middle" class="small">运行测试 · 再修改</text>
+  <text x="718" y="304" text-anchor="middle" class="small">提交候选补丁</text>
+
+  <path d="M805 262 L870 262" class="line"/>
+
+  <rect x="870" y="177" width="135" height="170" class="warn"/>
+  <text x="938" y="214" text-anchor="middle" class="label">验证器</text>
+  <text x="938" y="248" text-anchor="middle" class="small">应用补丁</text>
+  <text x="938" y="276" text-anchor="middle" class="small">运行测试</text>
+  <text x="938" y="304" text-anchor="middle" class="small">奖励 + 日志</text>
+
+  <path d="M938 347 C938 500, 718 500, 718 365" class="line"/>
+  <text x="828" y="532" text-anchor="middle" class="small">策略更新后，再采样下一批任务</text>
+
+  <rect x="355" y="395" width="450" height="68" class="box"/>
+  <text x="580" y="423" text-anchor="middle" class="label">关键保护：评测测试只读，环境错误单独记录</text>
+  <text x="580" y="449" text-anchor="middle" class="small">避免删测试、跳过执行和容器失败被误判为能力提升</text>
+</svg>

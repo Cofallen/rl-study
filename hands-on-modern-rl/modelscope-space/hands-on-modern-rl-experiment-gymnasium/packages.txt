@@ -1,0 +1,8 @@
+libosmesa6
+libgl1-mesa-glx
+libegl1
+libglfw3
+libgl1-mesa-dri
+libglu1-mesa
+mesa-utils
+ffmpeg

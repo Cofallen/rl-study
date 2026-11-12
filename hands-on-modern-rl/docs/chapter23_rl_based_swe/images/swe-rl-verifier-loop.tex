@@ -1,0 +1,14 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{fontspec}
+\setmainfont{Songti SC}
+\usetikzlibrary{arrows.meta,positioning}
+\begin{document}
+\begin{tikzpicture}[node distance=12mm,>=Stealth,every node/.style={align=center,font=\small},box/.style={rounded corners,draw=black!70,fill=black!3,minimum width=34mm,minimum height=19mm},agent/.style={box,draw=blue!60,fill=blue!5}]
+\node[box] (task) {任务输入\\仓库快照 + issue};
+\node[agent,right=of task] (agent) {代码智能体\\读文件 $\to$ 修改代码\\运行测试 $\to$ 根据报错再改};
+\node[box,right=of agent] (patch) {候选补丁\\一次完整交互轨迹};
+\node[box,right=of patch] (verifier) {可执行验证器\\fail-to-pass 测试\\pass-to-pass 回归测试};
+\draw[->] (task)--(agent); \draw[->] (agent)--(patch); \draw[->] (patch)--(verifier);
+\draw[->,dashed,brown!70] (verifier.south) -- ++(0,-10mm) -| node[below,pos=.25]{测试结果形成奖励并更新策略} (agent.south);
+\end{tikzpicture}
+\end{document}

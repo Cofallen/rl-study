@@ -1,0 +1,673 @@
+{
+  "groups": [
+    {
+      "id": "classic",
+      "title": "从一个小环境开始",
+      "desc": "价值、策略与控制，在可观察的环境中建立直觉。"
+    },
+    {
+      "id": "alignment",
+      "title": "让小模型学会偏好与工具",
+      "desc": "先验证奖励，再看模型怎样改变回答和行动。"
+    },
+    {
+      "id": "games",
+      "title": "走进游戏与多智能体",
+      "desc": "视觉决策、探索与自博弈，共用可回放的实验流程。"
+    },
+    {
+      "id": "frontier",
+      "title": "探索更大的交互世界",
+      "desc": "离线数据、世界模型与具身任务，按资源选择路线。"
+    }
+  ],
+  "labs": [
+    {
+      "id": "cartpole",
+      "g": "classic",
+      "name": "让小车学会保持平衡",
+      "en": "CARTPOLE · PPO",
+      "chapter": "1.3 PPO 训练可视化",
+      "lesson": "chapter01_cartpole/training",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "cart",
+      "desc": "观察奖励曲线，再播放这个模型自己学到的策略。",
+      "result": "奖励曲线、训练日志、独立 checkpoint 与策略 GIF。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment01-cartpole.ipynb",
+      "source": "code/chapter01_cartpole",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment01-cartpole.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment01-cartpole.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/cartpole-zh.html",
+        "en": "lab-results/cartpole-en.html"
+      }
+    },
+    {
+      "id": "bandit",
+      "g": "classic",
+      "name": "探索还是利用？",
+      "en": "BANDIT · EXPLORATION",
+      "chapter": "多臂老虎机与策略梯度",
+      "lesson": "chapter03_mdp/bandit",
+      "device": "CPU",
+      "kind": "数值实验",
+      "art": "bars",
+      "desc": "让随机、贪心和 UCB 在同一组老虎机上做选择。",
+      "result": "累计收益、遗憾曲线与多随机种子的策略比较。",
+      "path": "code/online-experiments/hands-on-modern-rl-bandit.ipynb",
+      "source": "code/chapter03_mdp/two_armed_bandit.py",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-bandit.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-bandit.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/bandit-zh.html",
+        "en": "lab-results/bandit-en.html"
+      }
+    },
+    {
+      "id": "gridworld",
+      "g": "classic",
+      "name": "在格子世界里找到路",
+      "en": "GRIDWORLD · Q-LEARNING",
+      "chapter": "3.3 价值迭代与 Q-Learning",
+      "lesson": "chapter03_mdp/value-experiment",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "grid",
+      "desc": "从一张价值表出发，看到路径怎样一步步形成。",
+      "result": "价值表、策略箭头、学习曲线与最终路径。",
+      "path": "code/online-experiments/hands-on-modern-rl-gridworld.ipynb",
+      "source": "code/chapter03_mdp/gridworld_q_learning.py",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-gridworld.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-gridworld.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/gridworld-zh.html",
+        "en": "lab-results/gridworld-en.html"
+      }
+    },
+    {
+      "id": "dqn",
+      "g": "classic",
+      "name": "DQN 怎样学会选动作",
+      "en": "DQN · DOUBLE DQN",
+      "chapter": "5.2 DQN 的结构与实现",
+      "lesson": "chapter07_dqn/dqn-components",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "bars",
+      "desc": "对照 DQN 与 Double DQN，拆开回放与目标网络。",
+      "result": "两种算法的奖励曲线、Q 值估计与策略回放。",
+      "path": "code/online-experiments/hands-on-modern-rl-dqn.ipynb",
+      "source": "code/chapter04_dqn/double_dqn_cartpole.py",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-dqn.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-dqn.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/dqn-zh.html",
+        "en": "lab-results/dqn-en.html"
+      }
+    },
+    {
+      "id": "reinforce",
+      "g": "classic",
+      "name": "用基线稳住策略梯度",
+      "en": "REINFORCE · BASELINE",
+      "chapter": "6.4–6.6 策略梯度实验",
+      "lesson": "chapter08_policy_gradient/baseline-experiment",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "bars",
+      "desc": "在同一个 CartPole 中，比较回报与优势带来的更新。",
+      "result": "多种子奖励曲线、方差对照与训练后的回放。",
+      "path": "code/online-experiments/hands-on-modern-rl-reinforce.ipynb",
+      "source": "code/chapter05_policy_gradient",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-reinforce.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-reinforce.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/reinforce-zh.html",
+        "en": "lab-results/reinforce-en.html"
+      }
+    },
+    {
+      "id": "pendulum",
+      "g": "classic",
+      "name": "让摆杆学会连续控制",
+      "en": "PENDULUM · ACTOR-CRITIC",
+      "chapter": "7.4 Pendulum 连续控制",
+      "lesson": "chapter09_actor_critic/pendulum",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "cart",
+      "desc": "动作从左与右变成连续力矩，观察 Actor 与 Critic。",
+      "result": "原始回报、控制力矩、归一化价值估计和真实摆杆动画；短训练仍有失败。",
+      "path": "code/online-experiments/hands-on-modern-rl-pendulum.ipynb",
+      "source": "code/chapter06_actor_critic/actor_critic_pendulum.py",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-pendulum.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-pendulum.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/pendulum-zh.html",
+        "en": "lab-results/pendulum-en.html"
+      }
+    },
+    {
+      "id": "minigrid",
+      "g": "classic",
+      "name": "在迷宫里发现奖励",
+      "en": "MINIGRID · EXPLORATION",
+      "chapter": "12.1 内在动机与探索",
+      "lesson": "chapter14_exploration_marl_hierarchical/intrinsic-motivation-exploration",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "grid",
+      "desc": "从小迷宫开始，观察稀疏奖励与探索行为。",
+      "result": "评估曲线、迷宫策略回放与每轮模型。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment06-minigrid-adventure.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment06-minigrid-adventure",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment06-minigrid-adventure.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment06-minigrid-adventure.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/minigrid-zh.html",
+        "en": "lab-results/minigrid-en.html"
+      }
+    },
+    {
+      "id": "gymnasium",
+      "g": "classic",
+      "name": "尝试不同的控制环境",
+      "en": "GYMNASIUM · PLAYGROUND",
+      "chapter": "经典 RL 环境合集",
+      "lesson": "chapter01_cartpole/principles",
+      "device": "CPU / GPU",
+      "kind": "真实训练",
+      "art": "cart",
+      "desc": "选择代表环境，比较状态、动作与训练反馈。",
+      "result": "所选任务的评估曲线、模型文件和真实回放。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment-gymnasium.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment-gymnasium",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment-gymnasium.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment-gymnasium.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/gymnasium-zh.html",
+        "en": "lab-results/gymnasium-en.html"
+      }
+    },
+    {
+      "id": "dpo",
+      "g": "alignment",
+      "name": "用偏好数据改变回答",
+      "en": "DPO · PREFERENCE",
+      "chapter": "14.4 DPO 对齐实验",
+      "lesson": "chapter17_dpo/dpo-hands-on",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "code",
+      "desc": "从零训练微型 GRU，再用成对偏好实际更新语言模型参数。",
+      "result": "DPO 损失、留出偏好间隔、回答对照与主题保持率；含内容退化反例。",
+      "path": "code/online-experiments/hands-on-modern-rl-dpo.ipynb",
+      "source": "code/chapter17_dpo",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-dpo.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-dpo.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/dpo-zh.html",
+        "en": "lab-results/dpo-en.html"
+      }
+    },
+    {
+      "id": "grpo",
+      "g": "alignment",
+      "name": "把正确答案变成奖励",
+      "en": "GRPO · RLVR",
+      "chapter": "15.1 / 15.3 组相对优势与奖励",
+      "lesson": "chapter18_grpo/rlvr",
+      "device": "CPU",
+      "kind": "机制演示",
+      "art": "bars",
+      "desc": "手算一组回答的奖励与优势，检验规则验证器。",
+      "result": "组内优势、验证器测试、逐 token 裁剪与 padding 梯度检查。",
+      "path": "code/online-experiments/hands-on-modern-rl-grpo.ipynb",
+      "source": "code/chapter09_grpo_rlvr",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-grpo.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-grpo.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/grpo-zh.html",
+        "en": "lab-results/grpo-en.html"
+      }
+    },
+    {
+      "id": "financial",
+      "g": "alignment",
+      "name": "让模型学会调用工具",
+      "en": "TOOL CALLING · GRPO",
+      "chapter": "15.6 金融工具调用 GRPO",
+      "lesson": "chapter18_grpo/financial-tool-calling-grpo",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "code",
+      "desc": "训练受限调用语言的小型 GRU，再将调用渲染为 JSON 并执行模拟工具。",
+      "result": "真实 GRPO 更新、格式与参数指标、训练和留出请求对照；含泛化失败。",
+      "path": "code/online-experiments/hands-on-modern-rl-financial.ipynb",
+      "source": "docs/chapter18_grpo/financial-tool-calling-grpo.md",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-financial.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-financial.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/financial-zh.html",
+        "en": "lab-results/financial-en.html"
+      }
+    },
+    {
+      "id": "vizdoom",
+      "g": "games",
+      "name": "从第一人称画面做决策",
+      "en": "VIZDOOM · DQN",
+      "chapter": "5.5 视觉游戏项目",
+      "lesson": "chapter07_dqn/visual-game-projects",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "grid",
+      "desc": "从小型射击场景中训练，查看当前策略的真实回放。",
+      "result": "DQN 训练日志、评估曲线与第一人称 GIF。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment02-vizdoom.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment02-vizdoom",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment02-vizdoom.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment02-vizdoom.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/vizdoom-zh.html",
+        "en": "lab-results/vizdoom-en.html"
+      }
+    },
+    {
+      "id": "atari",
+      "g": "games",
+      "name": "让像素变成动作",
+      "en": "ATARI · ALE",
+      "chapter": "5.5 视觉游戏项目",
+      "lesson": "chapter07_dqn/visual-game-projects",
+      "device": "CPU / GPU",
+      "kind": "真实训练",
+      "art": "grid",
+      "desc": "使用帧堆叠与 CNN，让 DQN 从游戏画面中学习。",
+      "result": "分轮评估、模型选择与 ALE 模拟器回放。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment03-atari.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment03-atari",
+      "next": "先在 CPU 上完成快速训练，再增加预算或切换 CUDA，比较各轮检查点与策略回放。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment03-atari.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment03-atari.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/atari-zh.html",
+        "en": "lab-results/atari-en.html"
+      },
+      "previewKind": "result"
+    },
+    {
+      "id": "selfplay",
+      "g": "games",
+      "name": "通过对手发现更好策略",
+      "en": "OPEN SPIEL · SELF-PLAY",
+      "chapter": "自博弈与博弈环境",
+      "lesson": "chapter32_selfplay/self-play-outlook/",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "grid",
+      "desc": "从井字棋与小型扑克开始，观察策略怎样相互影响。",
+      "result": "对随机策略胜率、均衡差距与完整对局回放。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment04-board-selfplay.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment04-board-selfplay",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment04-board-selfplay.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment04-board-selfplay.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/selfplay-zh.html",
+        "en": "lab-results/selfplay-en.html"
+      }
+    },
+    {
+      "id": "multiagent",
+      "g": "games",
+      "name": "让多个智能体学会合作",
+      "en": "PETTINGZOO · MULTI-AGENT",
+      "chapter": "12.2 多智能体强化学习",
+      "lesson": "chapter14_exploration_marl_hierarchical/marl",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "grid",
+      "desc": "在合作与竞争场景中，训练共享参数的策略。",
+      "result": "团队奖励、多智能体同步回放与 checkpoint。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment05-multiagent-games.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment05-multiagent-games",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment05-multiagent-games.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment05-multiagent-games.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/multiagent-zh.html",
+        "en": "lab-results/multiagent-en.html"
+      }
+    },
+    {
+      "id": "jax",
+      "g": "games",
+      "name": "用 JAX 训练像素小游戏",
+      "en": "JAX · MINATAR",
+      "chapter": "向量化游戏训练",
+      "lesson": "chapter10_ppo/ppo-game-benchmark",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "bars",
+      "desc": "从编译更新函数开始，观察训练与策略回放。",
+      "result": "编译日志、策略梯度损失、评估回报与语义像素回放。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment07-jax-games.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment07-jax-games",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment07-jax-games.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment07-jax-games.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/jax-zh.html",
+        "en": "lab-results/jax-en.html"
+      }
+    },
+    {
+      "id": "worldmodel",
+      "g": "frontier",
+      "name": "学会预测，再试着规划",
+      "en": "WORLD MODEL · PLANNING",
+      "chapter": "Model-Based RL 补充阅读",
+      "lesson": "chapter28_vla/embodied-intelligence/model-based-rl/",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "cart",
+      "desc": "在小型点质量环境中，学习动作怎样改变未来。",
+      "result": "动力学预测误差、规划轨迹与真实环境回报。",
+      "path": "code/online-experiments/hands-on-modern-rl-worldmodel.ipynb",
+      "source": "docs/chapter28_vla/embodied-intelligence/model-based-rl/snippets/minimal_mbrl_point_mass.py",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-worldmodel.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-worldmodel.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/worldmodel-zh.html",
+        "en": "lab-results/worldmodel-en.html"
+      }
+    },
+    {
+      "id": "offline",
+      "g": "frontier",
+      "name": "数据之外的动作可靠吗",
+      "en": "OFFLINE RL · DISTRIBUTION",
+      "chapter": "离线强化学习补充实验",
+      "lesson": "chapter32_selfplay/offline-rl/",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "bars",
+      "desc": "只用一份固定数据，检查策略是否被分布外估计误导。",
+      "result": "固定数据覆盖、分布外价值估计、三种子策略对照与保守性分析。",
+      "path": "code/online-experiments/hands-on-modern-rl-offline.ipynb",
+      "source": "docs/chapter32_selfplay/offline-rl/snippets/minimal_offline_rl_contextual_bandit.py",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-offline.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-offline.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/offline-zh.html",
+        "en": "lab-results/offline-en.html"
+      }
+    },
+    {
+      "id": "maniskill",
+      "g": "frontier",
+      "name": "在仿真中训练机器人",
+      "en": "MANISKILL · ROBOTICS",
+      "chapter": "具身任务进阶实验",
+      "lesson": "chapter28_vla/embodied-intelligence/model-based-rl/",
+      "device": "CPU / GPU",
+      "kind": "真实训练",
+      "art": "cart",
+      "desc": "从机器人任务出发，训练并回放当前模型的动作。",
+      "result": "PhysX 仿真中的策略评估、训练曲线与动作轨迹回放。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment08-maniskill.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment08-maniskill",
+      "next": "先在 CPU PhysX 中训练并查看策略轨迹，再使用 CUDA 增加并行环境数量。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment08-maniskill.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment08-maniskill.ipynb"
+      },
+      "previewKind": "result",
+      "results": {
+        "zh": "lab-results/maniskill-zh.html",
+        "en": "lab-results/maniskill-en.html"
+      }
+    },
+    {
+      "id": "minecraft",
+      "g": "frontier",
+      "name": "走进 Minecraft 的世界",
+      "en": "MINESTUDIO · VISUAL PPO",
+      "chapter": "视觉交互进阶实验",
+      "lesson": "chapter07_dqn/visual-game-projects",
+      "device": "CPU / GPU",
+      "kind": "真实训练",
+      "art": "grid",
+      "desc": "在真实 Minecraft 模拟器中，训练第一人称视觉策略。",
+      "result": "视觉 PPO 日志、评估与当前策略的第一人称回放。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment10-minestudio.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment10-minestudio",
+      "next": "启动 Linux Minecraft 引擎，在 CPU 或 CUDA 上完成视觉 PPO 训练和第一人称回放。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment10-minestudio.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment10-minestudio.ipynb"
+      },
+      "previewKind": "result",
+      "results": {
+        "zh": "lab-results/minecraft-zh.html",
+        "en": "lab-results/minecraft-en.html"
+      }
+    },
+    {
+      "id": "unity",
+      "g": "frontier",
+      "name": "在 Unity 场景里学习",
+      "en": "UNITY · ML-AGENTS",
+      "chapter": "具身与游戏进阶实验",
+      "lesson": "chapter10_ppo/ppo-game-benchmark",
+      "device": "GPU · Linux 场景",
+      "kind": "真实训练",
+      "art": "cart",
+      "desc": "选择小狗捡树枝或其他场景，观察 PPO 学到的行为。",
+      "result": "Unity 场景训练指标与本次运行产生的画面。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment11-unity-mlagents.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment11-unity-mlagents",
+      "next": "准备 Linux、CUDA 与 Unity 场景，逐轮保存模型并播放回放。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment11-unity-mlagents.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment11-unity-mlagents.ipynb"
+      }
+    },
+    {
+      "id": "ai2thor",
+      "g": "frontier",
+      "name": "在房间里寻找目标",
+      "en": "AI2-THOR · OBJECTNAV",
+      "chapter": "具身导航进阶实验",
+      "lesson": "chapter28_vla/embodied-intelligence/model-based-rl/",
+      "device": "GPU · 图形后端",
+      "kind": "真实训练",
+      "art": "grid",
+      "desc": "进入可交互房间，让智能体根据画面选择移动方向。",
+      "result": "导航评估、训练曲线与真实房间第一人称回放。",
+      "path": "code/online-experiments/hands-on-modern-rl-experiment12-ai2thor-embodied.ipynb",
+      "source": "modelscope-space/hands-on-modern-rl-experiment12-ai2thor-embodied",
+      "next": "准备 Linux、CUDA 与无窗口渲染环境，在房间场景中运行导航训练。",
+      "paths": {
+        "zh": "code/online-experiments/zh/hands-on-modern-rl-experiment12-ai2thor-embodied.ipynb",
+        "en": "code/online-experiments/hands-on-modern-rl-experiment12-ai2thor-embodied.ipynb"
+      }
+    },
+    {
+      "id": "agentic-tools",
+      "g": "alignment",
+      "name": "多轮工具与信用分配",
+      "en": "MULTI-TURN · TOOLS",
+      "chapter": "19.2 多轮强化学习",
+      "lesson": "chapter22_agentic/formulation",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "bars",
+      "desc": "工具返回后继续决策，检查终局奖励怎样更新早期动作。",
+      "result": "实际查询与计算、动作梯度检查、双种子评估和完整轨迹。",
+      "path": "code/online-experiments/hands-on-modern-rl-agentic-tools.ipynb",
+      "source": "code/chapter-notebooks/agentic-tools.py",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-agentic-tools.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-agentic-tools.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/agentic-tools-zh.html",
+        "en": "lab-results/agentic-tools-en.html"
+      }
+    },
+    {
+      "id": "agentic-code",
+      "g": "alignment",
+      "name": "让代码 Agent 修复并通过测试",
+      "en": "CODE AGENT · TESTS",
+      "chapter": "19.8 DeepCoder Agent",
+      "lesson": "chapter22_agentic/rllm-deepcoder-lab",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "bars",
+      "desc": "选择补丁、真实执行 Python 测试，再检查独立样例。",
+      "result": "公开与独立测试、补丁轨迹、实际子进程调用记录和策略参数。",
+      "path": "code/online-experiments/hands-on-modern-rl-agentic-code.ipynb",
+      "source": "code/chapter-notebooks/agentic-code.py",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-agentic-code.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-agentic-code.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/agentic-code-zh.html",
+        "en": "lab-results/agentic-code-en.html"
+      }
+    },
+    {
+      "id": "agentic-finqa",
+      "g": "alignment",
+      "name": "让 Agent 查表、计算并作答",
+      "en": "FINQA · SQL TOOLS",
+      "chapter": "19.9 金融分析 Agent",
+      "lesson": "chapter22_agentic/rllm-finqa-lab",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "bars",
+      "desc": "在合成公司数据库中调用 SQL 和计算器，完成多轮分析。",
+      "result": "真实 SQLite 查询、计算轨迹、独立公司评估和工具调用成本。",
+      "path": "code/online-experiments/hands-on-modern-rl-agentic-finqa.ipynb",
+      "source": "code/chapter-notebooks/agentic-finqa.py",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-agentic-finqa.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-agentic-finqa.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/agentic-finqa-zh.html",
+        "en": "lab-results/agentic-finqa-en.html"
+      }
+    },
+    {
+      "id": "agentic-research",
+      "g": "alignment",
+      "name": "让研究 Agent 检索并给出证据",
+      "en": "RESEARCH · EVIDENCE",
+      "chapter": "21.2 DeepResearch 评测",
+      "lesson": "chapter24_deep_research/deep-research-eval",
+      "device": "CPU",
+      "kind": "真实训练",
+      "art": "bars",
+      "desc": "在固定教学语料中学习检索词与证据选择，分开检查答案和引用。",
+      "result": "三种子训练、同条件前后评估、证据轨迹；贪心基线已满分，采样表现提高。",
+      "path": "code/online-experiments/hands-on-modern-rl-agentic-research.ipynb",
+      "source": "code/chapter-notebooks/agentic-research.py",
+      "next": "Notebook 已保存本次运行的图表与输出，可以直接查看结果页或重新运行。",
+      "validation": "local-cpu-executed",
+      "previewKind": "result",
+      "paths": {
+        "zh": "code/online-experiments/hands-on-modern-rl-agentic-research.ipynb",
+        "en": "code/online-experiments/en/hands-on-modern-rl-agentic-research.ipynb"
+      },
+      "results": {
+        "zh": "lab-results/agentic-research-zh.html",
+        "en": "lab-results/agentic-research-en.html"
+      }
+    }
+  ]
+}

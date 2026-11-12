@@ -1,0 +1,7 @@
+The four JPG task thumbnails are cropped and compressed from official
+AI2-THOR release-note environment captures:
+
+https://github.com/allenai/ai2thor/tree/main/doc/static/ReleaseNotes
+
+Upstream project: AI2-THOR, Copyright Allen Institute for AI.
+Distributed by the upstream project under the Apache License 2.0.

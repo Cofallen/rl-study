@@ -1,0 +1,11 @@
+gradio>=6.17,<7
+pettingzoo>=1.25,<2
+mpe2>=0.0.1,<1
+supersuit>=3.10,<4
+stable-baselines3>=2.7,<3
+torch>=2.6,<3
+pygame>=2.6,<3
+pymunk>=6.9,<8
+matplotlib>=3.8,<4
+imageio>=2.34,<3
+Pillow>=10,<13

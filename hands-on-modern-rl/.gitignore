@@ -1,0 +1,69 @@
+node_modules/
+docs/.vitepress/dist
+docs/.vitepress/cache
+/.vitepress/
+.DS_Store
+__pycache__/
+*.pyc
+.venv-modelscope-games/
+.venv-test-*/
+_vizdoom.ini
+
+# Agents
+AGENTS.md
+CLAUDE.md
+
+# 运行时生成的图片、模型、数据、资源
+docs/assets-sources/
+docs/public/optimized/
+*.png
+!docs/chapter01_cartpole/images/cartpole-real-env-frames.png
+!docs/chapter01_cartpole/images/cartpole-real-reward-curve.png
+!docs/chapter01_cartpole/images/cartpole-real-training-metrics.png
+!docs/appendix_industrial_training/images/*.png
+!docs/chapter13_future_trends/embodied-intelligence/model-based-rl/images/paper/*.png
+!docs/chapter13_future_trends/offline-rl/images/paper/*.png
+!docs/**/*.png
+output/
+code/**/output/
+code/**/outputs/
+code/**/*.zip
+code/**/dpo_results/
+code/**/sft_results/
+code/**/rm_results/
+code/**/ppo_results/
+code/**/preference_data.json
+!code/chapter01_cartpole/output/
+!code/chapter01_cartpole/output/training_metrics_seed42.csv
+code/chapter01_cartpole/output/*.pth
+code/chapter01_cartpole/output/*.png
+!code/chapter01_cartpole/output/training_metrics_seed42.csv
+code/**/geometry_dataset/
+.claude/*
+
+# Debug scripts for textbook writing
+debug/
+
+# Temporary scripts and files
+temp/
+docs/__pdf__/
+.worktrees/
+
+# Generated sitemap
+docs/public/sitemap.xml
+
+# Logs and intermediate files
+*.log
+*.aux
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+scripts/*.pdf
+swanlog/
+
+# Qoder local skills
+.qoder/
+docs/.vitepress/.temp/

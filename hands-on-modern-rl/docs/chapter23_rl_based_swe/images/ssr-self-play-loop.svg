@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="360" viewBox="0 0 1120 360" role="img" aria-labelledby="title desc">
+  <title id="title">Self-Play SWE-RL 的注入与修复闭环</title>
+  <desc id="desc">同一个模型先在沙箱仓库中注入缺陷并生成测试补丁，验证任务有效后再修复缺陷，测试结果用于策略更新，之后生成更有区分度的任务。</desc>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#55708f"/></marker><style>.box{fill:#f7f8fa;stroke:#5f6b78;stroke-width:1.6}.blue{fill:#eef5ff;stroke:#3973b7;stroke-width:1.8}.t{font:600 19px 'Songti SC','Noto Serif CJK SC',serif;fill:#202936}.s{font:14.5px 'Songti SC','Noto Serif CJK SC',serif;fill:#53606f}.arr{stroke:#55708f;stroke-width:2;fill:none;marker-end:url(#a)}.loop{stroke:#9a6a28;stroke-width:2;fill:none;stroke-dasharray:7 5;marker-end:url(#a)}</style></defs>
+  <rect x="30" y="80" width="180" height="105" rx="14" class="box"/><text x="120" y="120" text-anchor="middle" class="t">沙箱仓库</text><text x="120" y="151" text-anchor="middle" class="s">原始测试可运行</text>
+  <rect x="255" y="55" width="230" height="155" rx="14" class="blue"/><text x="370" y="94" text-anchor="middle" class="t">缺陷注入阶段</text><text x="370" y="127" text-anchor="middle" class="s">修改代码，注入有效缺陷</text><text x="370" y="157" text-anchor="middle" class="s">同时生成测试补丁</text><text x="370" y="187" text-anchor="middle" class="s">由当前模型承担这一角色</text>
+  <rect x="530" y="80" width="200" height="105" rx="14" class="box"/><text x="630" y="120" text-anchor="middle" class="t">任务有效性检查</text><text x="630" y="151" text-anchor="middle" class="s">原代码通过，缺陷代码失败</text>
+  <rect x="775" y="55" width="265" height="155" rx="14" class="blue"/><text x="907" y="94" text-anchor="middle" class="t">缺陷修复阶段</text><text x="907" y="127" text-anchor="middle" class="s">读取仓库与失败测试</text><text x="907" y="157" text-anchor="middle" class="s">生成补丁并真实执行</text><text x="907" y="187" text-anchor="middle" class="s">仍由同一个模型承担</text>
+  <path d="M210 132 H255" class="arr"/><path d="M485 132 H530" class="arr"/><path d="M730 132 H775" class="arr"/>
+  <path d="M907 210 V285 H370 V211" class="loop"/><text x="638" y="317" text-anchor="middle" class="s">测试奖励更新策略，并筛选出更有区分度的新任务</text>
+</svg>

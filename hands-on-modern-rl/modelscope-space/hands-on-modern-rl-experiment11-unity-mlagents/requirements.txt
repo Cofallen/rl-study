@@ -1,0 +1,9 @@
+gradio[mcp]==6.17.3
+setuptools>=68,<81
+mcp>=1.6,<2
+matplotlib>=3.8,<4
+numpy==1.23.5
+Pillow>=10,<12
+imageio>=2.34,<3
+imageio-ffmpeg>=0.5,<1
+PyYAML>=6,<7

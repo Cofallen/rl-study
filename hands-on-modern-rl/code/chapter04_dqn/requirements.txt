@@ -1,0 +1,18 @@
+# Chapter 4: Deep Reinforcement Learning DQN experiment dependencies
+gymnasium[classic-control]>=0.29.0
+gymnasium[box2d]>=0.29.0
+gymnasium[atari,accept-rom-license]>=1.0.0
+ale-py>=0.10.0
+opencv-python>=4.8.0
+stable-baselines3>=2.0.0
+torch>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+imageio>=2.30.0
+tensorboard>=2.14.0
+swanlab>=0.3.0
+pyboy>=2.0.0
+rich>=13.0.0
+tqdm>=4.65.0
+
+# The Pokemon Red DQN experiment requires you to provide your own legally obtained ROM; this repository does not distribute game files.

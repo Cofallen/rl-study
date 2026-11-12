@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img" aria-labelledby="title desc">
+  <title id="title">Browser RL Harness 训练闭环</title>
+  <desc id="desc">研究问题进入智能体，智能体通过搜索、打开网页和保存证据与环境交互，验证器检查答案和引用，训练器使用奖励更新策略。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#64748b;stroke-width:2;rx:16}
+      .agent{fill:#eff6ff;stroke:#3b82f6;stroke-width:2;rx:16}
+      .env{fill:#f0fdf4;stroke:#22c55e;stroke-width:2;rx:16}
+      .verify{fill:#fff7ed;stroke:#f97316;stroke-width:2;rx:16}
+      .line{fill:none;stroke:#64748b;stroke-width:2.2;marker-end:url(#arrow)}
+      .title{font:700 23px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#0f172a}
+      .label{font:650 18px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#0f172a}
+      .small{font:15px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;fill:#475569}
+    </style>
+  </defs>
+  <text x="540" y="38" text-anchor="middle" class="title">Browser RL Harness：把网页交互变成可训练轨迹</text>
+
+  <rect x="30" y="205" width="165" height="115" class="box"/>
+  <text x="112" y="244" text-anchor="middle" class="label">研究问题</text>
+  <text x="112" y="274" text-anchor="middle" class="small">任务、预算、答案格式</text>
+
+  <path d="M195 262 L260 262" class="line"/>
+
+  <rect x="260" y="165" width="205" height="195" class="agent"/>
+  <text x="362" y="205" text-anchor="middle" class="label">研究智能体</text>
+  <text x="362" y="240" text-anchor="middle" class="small">提出查询</text>
+  <text x="362" y="270" text-anchor="middle" class="small">选择页面</text>
+  <text x="362" y="300" text-anchor="middle" class="small">保存证据</text>
+  <text x="362" y="330" text-anchor="middle" class="small">提交答案</text>
+
+  <path d="M465 225 C535 170, 575 170, 640 225" class="line"/>
+  <text x="553" y="174" text-anchor="middle" class="small">动作：search / open / click</text>
+
+  <rect x="640" y="145" width="205" height="235" class="env"/>
+  <text x="742" y="185" text-anchor="middle" class="label">网页环境</text>
+  <text x="742" y="222" text-anchor="middle" class="small">搜索 API</text>
+  <text x="742" y="252" text-anchor="middle" class="small">正文抽取</text>
+  <text x="742" y="282" text-anchor="middle" class="small">Playwright 浏览器</text>
+  <text x="742" y="326" text-anchor="middle" class="small">缓存 · 超时 · 重试</text>
+  <text x="742" y="350" text-anchor="middle" class="small">页面快照与错误码</text>
+
+  <path d="M640 305 C575 355, 530 355, 465 305" class="line"/>
+  <text x="553" y="382" text-anchor="middle" class="small">观察：结果、正文、截图、工具错误</text>
+
+  <path d="M845 262 L900 262" class="line"/>
+
+  <rect x="900" y="165" width="150" height="195" class="verify"/>
+  <text x="975" y="205" text-anchor="middle" class="label">验证器</text>
+  <text x="975" y="240" text-anchor="middle" class="small">答案正确性</text>
+  <text x="975" y="270" text-anchor="middle" class="small">引用支持度</text>
+  <text x="975" y="300" text-anchor="middle" class="small">步骤与成本</text>
+  <text x="975" y="330" text-anchor="middle" class="small">奖励 + 日志</text>
+
+  <path d="M975 360 C975 492, 362 492, 362 378" class="line"/>
+  <text x="670" y="525" text-anchor="middle" class="small">训练器提高高奖励轨迹的概率，再采样下一批问题</text>
+</svg>

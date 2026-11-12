@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="330" viewBox="0 0 1120 330" role="img" aria-labelledby="title desc">
+  <title id="title">SWE-RL 从任务到策略更新的闭环</title>
+  <desc id="desc">仓库和问题描述交给代码智能体，智能体读取、修改并运行测试，候选补丁接受隐藏评测测试，奖励再用于更新策略。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#55708f"/></marker>
+    <style>
+      .box{fill:#f7f8fa;stroke:#5f6b78;stroke-width:1.6}.accent{fill:#eef5ff;stroke:#3973b7;stroke-width:1.8}.label{font:600 20px 'Songti SC','Noto Serif CJK SC',serif;fill:#202936}.sub{font:15px 'Songti SC','Noto Serif CJK SC',serif;fill:#53606f}.arrow{stroke:#55708f;stroke-width:2;fill:none;marker-end:url(#arrow)}.return{stroke:#9a6a28;stroke-width:2;fill:none;stroke-dasharray:7 5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect x="35" y="75" width="185" height="112" rx="14" class="box"/>
+  <text x="127" y="116" text-anchor="middle" class="label">任务输入</text>
+  <text x="127" y="148" text-anchor="middle" class="sub">仓库快照 + issue</text>
+  <rect x="270" y="55" width="230" height="152" rx="14" class="accent"/>
+  <text x="385" y="96" text-anchor="middle" class="label">代码智能体</text>
+  <text x="385" y="130" text-anchor="middle" class="sub">读文件 → 修改代码</text>
+  <text x="385" y="160" text-anchor="middle" class="sub">运行测试 → 根据报错再改</text>
+  <rect x="550" y="75" width="190" height="112" rx="14" class="box"/>
+  <text x="645" y="116" text-anchor="middle" class="label">候选补丁</text>
+  <text x="645" y="148" text-anchor="middle" class="sub">一次完整交互轨迹</text>
+  <rect x="790" y="55" width="280" height="152" rx="14" class="box"/>
+  <text x="930" y="96" text-anchor="middle" class="label">可执行验证器</text>
+  <text x="930" y="130" text-anchor="middle" class="sub">fail-to-pass 测试</text>
+  <text x="930" y="160" text-anchor="middle" class="sub">pass-to-pass 回归测试</text>
+  <path d="M220 131 H270" class="arrow"/><path d="M500 131 H550" class="arrow"/><path d="M740 131 H790" class="arrow"/>
+  <path d="M930 207 V270 H385 V208" class="return"/>
+  <text x="655" y="298" text-anchor="middle" class="sub">测试结果形成奖励，策略据此提高下一次修复成功率</text>
+</svg>

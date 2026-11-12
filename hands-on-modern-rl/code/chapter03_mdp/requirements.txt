@@ -1,0 +1,5 @@
+# Chapter 3: dependencies for MDP and value function experiments
+gymnasium[classic-control]>=0.29.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+torch>=2.0.0

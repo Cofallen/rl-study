@@ -1,0 +1,7 @@
+The four JPG task thumbnails are still frames extracted from the official
+ManiSkill environment demo videos:
+
+https://github.com/haosulab/ManiSkill/tree/main/figures/environment_demos
+
+Upstream project: ManiSkill, Copyright the ManiSkill contributors.
+Distributed by the upstream project under the Apache License 2.0.

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title description">
+  <title id="title">MineStudio xGPU Minecraft Agent Lab</title>
+  <desc id="description">CartPole reinforcement-learning task preview</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11183f"/>
+      <stop offset="1" stop-color="#5145d8"/>
+    </linearGradient>
+    <linearGradient id="track" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#94a3ff"/>
+      <stop offset="1" stop-color="#e7e9ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" rx="32" fill="url(#background)"/>
+  <circle cx="830" cy="84" r="132" fill="#ffffff" opacity=".08"/>
+  <text x="58" y="74" fill="#b9c0ff" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">EXPERIMENT 10</text>
+  <text x="58" y="126" fill="#ffffff" font-family="Arial, sans-serif" font-size="34" font-weight="800">MineStudio xGPU Minecraft Agent Lab</text>
+  <path d="M120 424 H840" stroke="url(#track)" stroke-width="12" stroke-linecap="round"/>
+  <rect x="390" y="344" width="180" height="70" rx="22" fill="#ffffff"/>
+  <circle cx="430" cy="426" r="28" fill="#11183f" stroke="#aab2ff" stroke-width="10"/>
+  <circle cx="530" cy="426" r="28" fill="#11183f" stroke="#aab2ff" stroke-width="10"/>
+  <path d="M480 352 L548 190" stroke="#65e6be" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="480" cy="352" r="20" fill="#f8fafc" stroke="#5145d8" stroke-width="8"/>
+  <circle cx="548" cy="190" r="22" fill="#65e6be"/>
+  <path d="M280 382 H350 M610 382 H680" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity=".76"/>
+  <text x="58" y="498" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">PPO · xGPU · LIVE CURVE · LIVE LOG · LEARNED REPLAY</text>
+</svg>

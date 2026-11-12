@@ -1,0 +1,13 @@
+xvfb
+ffmpeg
+aria2
+libgl1
+libgl1-mesa-dri
+libglx-mesa0
+mesa-utils
+libglib2.0-0
+libx11-6
+libxext6
+libxrender1
+libxtst6
+libxi6

@@ -1,0 +1,10 @@
+gradio>=6.17,<7
+numpy>=1.26,<2
+gymnasium>=1.2,<2
+ale-py>=0.12,<1
+stable-baselines3>=2.7,<3
+torch>=2.6,<3
+opencv-python-headless>=4.10,<5
+matplotlib>=3.8,<4
+imageio>=2.34,<3
+Pillow>=10,<13

@@ -229,3 +229,197 @@ $$r-1-\log r\approx \tfrac12 (r-1)^2 .$$
 
 ---
 
+### 2026-11-12 10:47 · 圈选提问
+
+**问**：补充知识点：熵 KL 等有关概率，数学在强化学习的知识点作为补充。尽量从定义讲。我感觉他是吧数学部分内容直接用了，但是我没有了解过。
+
+**答**：
+
+结论：这几个量背后只有三件数学基础：**期望与重要性采样**、**熵**、**KL**；PPO 里出现的 ratio、advantage、clip 都是它们的组合。按你要求从定义讲，下面会略超 350 字。
+
+**1. 期望（一切的地基）**
+离散分布 $\pi(a\mid s)$ 下 $E_\pi[f]=\sum_a \pi(a\mid s)f(a)$。线性性：$E[aX+bY]=aE[X]+bE[Y]$，**不要求独立**——后面每一步拆项都靠它。
+
+**2. 熵**
+$$H(\pi(\cdot\mid s))=-\sum_a\pi(a\mid s)\log\pi(a\mid s)=E_\pi[-\log\pi]$$
+- 取最大值的依据是 Jensen 不等式（$\log$ 为凹函数，$E[\log X]\le\log E[X]$）：
+$$H=\sum_a\pi_a\log\tfrac{1}{\pi_a}\le\log\sum_a\pi_a\cdot\tfrac{1}{\pi_a}=\log n$$
+CartPole 有两个动作，所以上限是 $\ln 2$。
+- 熵无法降到 0：softmax 给每个动作的概率永远 $>0$，只有 logits 趋于 $\pm\infty$ 时，概率才会趋于 one-hot，所以熵只能“接近” 0。
+
+**3. KL 散度**
+$$D_{KL}(p\|q)=\sum_a p(a)\log\frac{p(a)}{q(a)}=E_p\Big[\log\tfrac{p}{q}\Big]$$
+- 由 Jensen 不等式得 $D_{KL}\ge 0$，等号当且仅当 $p=q$；它是非对称的，所以不是距离。
+- PPO 里 $D_{KL}(\pi_{\text{old}}\|\pi_\theta)$ 衡量“策略挪了多远”。常用 k3 估计：$D\approx E_{\pi_\theta}[(r-1)-\log r]$，$r=\pi_\theta/\pi_{\text{old}}$，低方差无偏。
+
+**4. 重要性采样（ratio 的出处）**
+$$E_{\pi_{\text{old}}}[f]=\sum_a\pi_{\text{old}}f=\sum_a\pi_\theta\frac{\pi_{\text{old}}}{\pi_\theta}f=E_{\pi_\theta}\Big[f\tfrac{\pi_{\text{old}}}{\pi_\theta}\Big]$$
+PPO 用的是倒数 $r_t(\theta)=\frac{\pi_\theta}{\pi_{\text{old}}}$，因此可以用旧策略采样出的数据来估计新策略的目标。
+
+**5. log-derivative trick（策略梯度的出处）**
+由 $\nabla_\theta\log\pi_\theta=\frac{\nabla_\theta\pi_\theta}{\pi_\theta}$ 得 $\nabla_\theta\pi_\theta=\pi_\theta\nabla_\theta\log\pi_\theta$：
+$$\nabla_\theta E_{\pi_\theta}[R]=\sum_a\nabla_\theta\pi_\theta R=E_{\pi_\theta}[R\,\nabla_\theta\log\pi_\theta]$$
+（第一步用期望的线性性把梯度移入求和。）
+
+**6. 衡量优劣的基准与优势**
+对任意只依赖状态的基线 $b(s)$：$E_\pi[b\nabla\log\pi]=b\sum_a\nabla\pi_\theta=b\nabla_\theta 1=0$，所以减基线不改变梯度期望，却能降低方差。取 $b=V$ 就是优势 $A=Q-V$。前面的 PPO 中，优势为正就提高该动作概率，依据就在这里。
+
+▸ 一句话记住：期望给骨架，熵度量“有多随机”，KL 度量“挪了多远”，ratio 来自重要性采样，advantage 是减了基线的策略梯度。
+
+---
+
+### 2026-11-12 11:41 · 💡 灵感
+
+> 🧠 我的想法：rollout 是固定容量缓存；episode 结束就 reset 继续填，直到 rollout 填满再更新。跨 episode 不需要继承回报，但要用 done/truncated 正确隔断 GAE；episode 跨 rollout 时用 bootstrap 继承价值估计；RNN hidden state 在 episode 边界必须 reset。max_episode_steps 是单 episode 交互步数上限，不是总训练步数。
+
+---
+
+### 2026-11-12 12:10 · 圈选提问
+
+**问**：[object PointerEvent]
+
+**答**：
+
+第三个圈选事件仍然是 `[object PointerEvent]`，里面没有选区文本，因此我读不到你圈的内容。
+
+如果你使用的是阅读器/插件，那么圈选事件只是把事件对象传了过来，并没有把 `selection.toString()` 一并传过来。这是我这边无法修复的环节，麻烦你换成下面两种方式：
+- 直接粘贴：在页面上拖选后按 `Ctrl+C`，再粘贴给我（1.3 节的代码块尤其建议这样做）；
+- 或者发截图，我会先用「我读到的公式：$$...$$」回报，若符号有误，你可以立刻纠正。
+
+▸ 一句话记住：事件对象转成字符串后只剩类名，文字必须由你复制给我。
+
+---
+
+### 2026-11-12 12:10 · 💡 灵感
+
+> 🧠 我的想法：“batch 是一次参数更新样本，是 rollout 数据”
+✅ 对，但更准确：mini-batch 是从 rollout 里切出来的一次参数更新用的 64 个 transition。
+
+“rollout 是 2048 的意思是我理解是 2048 次环境交互产生的数据”
+✅ 单环境下对；多环境下是 2048 × n_envs 次交互。
+
+---
+
+### 2026-11-12 12:27 · 圈选提问 · §计算 GAE <!-- id:mwd1qhko0ist7 -->
+
+**原文**：
+
+> Critic 的目标由未归一化优势得到：
+> 
+> returns = raw_advantages + values
+> advantages = (raw_advantages - raw_advantages.mean()) / (
+> raw_advantages.std(unbiased=False) + 1e-8
+> )
+> 
+> 归一化后的 advantages 用于更新 Actor。未归一化的 returns 用于训练 Critic，因此两者不能互换。
+
+![snip](snips/1794457620599.jpg)
+
+**问**：这个不理解。就是我理解是actor和critic应该是训练出 s->a s->v(s)的这种网络，输入s对应的obs,输出概率和v。 但是这里代码是说的我看是一个数啊，他网络输入不是obs。
+
+**答**：
+
+结论：那两行不是“标量运算”，而是对**整个 rollout batch 张量做逐元素**运算——每个元素对应一个 $(t,\ \text{env})$ 样本；网络输入确实还是 obs，只是这一步在 obs 之外做“账本计算”。
+
+**形状与来源**
+
+- rollout 阶段每步存下 `obs, act, logp, value`（`value` 是 critic 前向、无梯度）。形状都是 `[T, N]`（T 步 × N 个并行环境）。
+- GAE 逆序递推，得到的 `raw_advantages` 形状仍是 `[T, N]`，不是单个数值：
+
+$$\hat A_t=\delta_t+\gamma\lambda\,\delta_{t+1}+\cdots,\qquad \delta_t=r_t+\gamma V(o_{t+1})-V(o_t)$$
+
+- `returns = raw_advantages + values` 是**逐元素**相加，得到 TD(λ) 回报目标 $\hat G_t=\hat A_t+V(o_t)$，形状 `[T, N]`。
+
+**Critic 最终还是吃 obs**
+
+$$\mathcal L_{\text{critic}}=\frac{1}{TN}\sum_{t,n}\big(V_\theta(o_t)-\hat G_t\big)^2$$
+
+`returns` 只是这条回归的**标签**，梯度回传仍经过 $V_\theta(o_t)$，所以网络输入仍是 obs、输出仍是 $V(o)$。你看到的“一个数”，其实是张量里的一项。
+
+**为什么不能互换**
+
+`returns` 是真实回报尺度，归一化会让 critic 学错基准值；`advantages` 只进 actor 的损失 $\min(\rho\hat A,\ \text{clip}(\rho)\hat A)$，做零均值单位方差只是降方差，不改变策略方向。
+
+▸ 一句话记住：`returns` 是给 critic 的回归标签（保持原尺度），`advantages` 是给 actor 的优势权重（归一化降方差），两者都是 `[T,N]` 张量，逐元素算。
+
+---
+
+### 2026-11-12 12:47 · 提问 <!-- id:mwd2gz1awnec1 -->
+
+**问**：就是transitions是参数，是个张量。得到的advantage和return在ppo_update里是张量。transitions.append({
+            "obs": obs,
+            "action": action.item(),
+            "log_prob": log_prob.item(),
+            "value": value.item(),
+            "reward": float(reward),
+            "terminated": terminated,
+            "truncated": truncated,
+            "next_value": next_value,
+        })  ```然后这个是代码，这个网络是4*64*64*1的，那么这个transition只取第一项吗
+
+**答**：
+
+结论：4 是 **obs 的维度**（CartPole 的 $[x,\dot x,\theta,\dot\theta]$），不是 batch；`4-64-64-1` 是 MLP 结构，整批输入，绝不“只取第一项”。
+
+**这套数据结构长什么样**
+
+- `transitions` 是 **长度为 T 的 list of dict**，每项对应一个时间步；`obs` 形如 `[4]`（单环境）或 `[N,4]`（并行 N 环境）。
+- `.item()` 只作用在**标量**上：`action`、`log_prob`、`value`、`reward` 都是 `[1]` 或 `[]` 张量，`.item()` 把它变 Python 数，便于存 list。
+- `next_value` 是 bootstrap 用的 $\gamma V(o_{t+1})$，同样是标量。
+
+**到 ppo_update 时怎么变成张量**
+
+按时间维 stack：
+
+$$\text{obs}\in\mathbb R^{T\times 4},\quad \text{value},\text{adv},\text{ret}\in\mathbb R^{T\times 1}$$
+
+前向就是 $V_\phi(\text{obs})$：输入 `[T,4]` → 隐层 64 → 64 → 输出 `[T,1]`。每个样本输出一个 $V$，T 个样本一次算完，对应上一轮说的 `[T,N]` 张量的 T 轴。
+
+**“只取第一项”是误区**
+
+- `.item()` 只剥掉长度为 1 的维度，不丢数据；长度 4 的 obs 没被 `.item()`。
+- 网络吃的是整批 `[T,4]`，`4` 是特征维，最后一层 `1` 才是输出维（value 是标量）。
+- 若真是单环境且 `batch=1`，那 `[1,4]` 确实只有一个样本——但这是 batch 大小，不是取字典的某一项。
+
+不确定的点：你这版代码是否并行多环境、`obs` 存在 `[1,4]` 还是 `[4]`，我看不到源码；回看 § 计算 GAE 里 rollout 收集那段确认形状。
+
+▸ 一句话记住：4 是 obs 维度、T 是样本数，`.item()` 只把标量张量转成 float，ppo_update 里 stack 成 `[T,4]` 整批过网络。
+
+---
+
+### 2026-11-12 12:49 · 提问 <!-- id:mwd2jp13qn8m7 -->
+
+**问**：能够我问的是，这里transition明显是个dist, 实际训练的时候actor和critic网络的输入到底用的什么。
+
+**答**：
+
+结论：网络的输入**只有 `obs`**；dict 里其他字段是训练时“当作标签/系数”用的，不进网络。
+
+**各字段的角色**
+
+- `obs` → **唯一输入**，stack 成 `[T,4]`，喂给 actor 和 critic（CartPole 常共享或分两个 MLP）。
+- `action` → 标签，只用来索引 actor 输出的 logits 里对应那一个，算 $\log\pi_\theta(a_t|o_t)$，**不输入**。
+- `log_prob` → rollout 时旧策略的值，只用于算比率 $\rho=\pi_\theta/\pi_{\text{old}}$，是常量。
+- `value` → 旧 critic 的估计，用于 GAE 已经算好了；训练时 critic **重新前向**得到 $V_\phi(o_t)$，与 `returns` 做 MSE。
+- `reward / done` → 只在 GAE 递推时用过，更新阶段不用。
+
+**训练时的实际调用**
+
+$$\log\pi_{\text{new}},\ V_{\text{new}}=\text{net}(\text{obs})$$
+
+- actor loss：
+
+$$\mathcal L_\text{actor}=-\mathbb E\big[\min(\rho\,\hat A,\ \text{clip}(\rho,1-\epsilon,1+\epsilon)\hat A)\big],\quad \rho=\frac{\exp(\log\pi_{\text{new}})}{\exp(\text{log\_prob})}$$
+
+- critic loss：
+
+$$\mathcal L_\text{critic}=\mathbb E\big[(V_{\text{new}}-\text{returns})^2\big]$$
+
+依据：重要性采样给出 $\rho$，控制变量给出优势 $\hat A$；梯度只经 $\pi_\theta(\cdot|o)$ 和 $V_\phi(o)$，不经 `action/log_prob/value` 这些记录值。
+
+**一句话区分**：dict 是“历史记录”，训练时 `obs` 是输入，`action/log_prob/returns` 是计算损失时要对齐的常量。
+
+▸ 一句话记住：网络永远只吃 `obs`，其余字段都是算 loss 时的“对账常量”。
+
+---
+

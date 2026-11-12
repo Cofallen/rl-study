@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="340" viewBox="0 0 1080 340" role="img" aria-labelledby="title desc">
+  <title id="title">Deep Research 评测对象</title>
+  <desc id="desc">研究问题经过搜索与阅读形成最终答案，分别评估过程、证据和答案。</desc>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+  <g font-family="Songti SC, Noto Serif CJK SC, serif" text-anchor="middle" fill="#202124">
+    <g stroke="#555" fill="#fafafa" stroke-width="2"><rect x="50" y="45" width="250" height="86" rx="14"/><rect x="415" y="45" width="250" height="86" rx="14"/><rect x="780" y="45" width="250" height="86" rx="14"/></g>
+    <g stroke="#2457a7" fill="#f5f8ff" stroke-width="2"><rect x="50" y="220" width="270" height="78" rx="14"/><rect x="405" y="220" width="270" height="78" rx="14"/><rect x="760" y="220" width="270" height="78" rx="14"/></g>
+    <g font-size="24"><text x="175" y="98">研究问题</text><text x="540" y="82">搜索与阅读</text><text x="905" y="82">最终答案</text></g>
+    <g font-size="17" fill="#555"><text x="540" y="109">产生浏览轨迹</text><text x="905" y="109">附引用</text></g>
+    <g font-size="21"><text x="185" y="254">过程是否真实</text><text x="540" y="254">证据是否支持</text><text x="895" y="254">答案是否正确</text></g>
+    <g font-size="16" fill="#555"><text x="185" y="280">步骤与成本</text><text x="540" y="280">关键论断</text><text x="895" y="280">语义是否等价</text></g>
+  </g>
+  <g fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#a)"><path d="M300 88 H405"/><path d="M665 88 H770"/><path d="M500 132 V176 H185 V210"/><path d="M865 132 V176 H540 V210"/><path d="M945 132 V210"/></g>
+</svg>

@@ -1,0 +1,27 @@
+\documentclass[border=10pt,tikz]{standalone}
+\usepackage{tikz}
+\usepackage{fontspec}
+\setmainfont{Songti SC}
+\setsansfont{Heiti SC}
+\usetikzlibrary{arrows.meta,positioning}
+
+\begin{document}
+\begin{tikzpicture}[
+  box/.style={draw=black!70,fill=black!3,rounded corners=7pt,minimum width=3.0cm,minimum height=1.25cm,align=center,font=\small},
+  trusted/.style={draw=blue!55!black,fill=blue!4,rounded corners=7pt,minimum width=3.0cm,minimum height=1.25cm,align=center,font=\small},
+  stop/.style={draw=red!55!black,fill=red!4,rounded corners=7pt,minimum width=3.0cm,minimum height=1.15cm,align=center,font=\small},
+  arrow/.style={-{Stealth[length=6pt,width=5pt]},line width=1pt,black!65,shorten >=3pt,shorten <=3pt}
+]
+\node[trusted] (user) {用户目标\\[-1pt]{\footnotesize 已授权指令}};
+\node[box,below=1.05cm of user] (tool) {网页 / 邮件 / PDF\\[-1pt]{\footnotesize 不可信内容}};
+\node[trusted,right=1.3cm of user,yshift=-1.15cm] (policy) {指令层级\\[-1pt]{\footnotesize 判断冲突}};
+\node[box,right=1.3cm of policy] (gate) {动作与权限检查};
+\node[trusted,right=1.15cm of gate,yshift=0.85cm] (run) {低风险且已授权\\执行};
+\node[stop,right=1.15cm of gate,yshift=-0.85cm] (confirm) {高风险或越界\\拒绝 / 请求确认};
+\draw[arrow] (user.east) -- (policy.north west);
+\draw[arrow] (tool.east) -- (policy.south west);
+\draw[arrow] (policy) -- (gate);
+\draw[arrow] (gate.east) -- (run.west);
+\draw[arrow] (gate.east) -- (confirm.west);
+\end{tikzpicture}
+\end{document}

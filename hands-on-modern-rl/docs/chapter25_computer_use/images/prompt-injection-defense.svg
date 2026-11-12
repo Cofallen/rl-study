@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="360" viewBox="0 0 1120 360" role="img" aria-labelledby="title desc">
+  <title id="title">Prompt Injection 多层防线</title>
+  <desc id="desc">用户指令和不可信内容进入指令层级，随后经过动作权限检查再执行或请求确认。</desc>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+  <g font-family="Songti SC, Noto Serif CJK SC, serif" text-anchor="middle" fill="#202124">
+    <g stroke="#2457a7" fill="#f5f8ff" stroke-width="2"><rect x="35" y="45" width="230" height="82" rx="14"/><rect x="360" y="139" width="220" height="82" rx="14"/><rect x="855" y="45" width="230" height="82" rx="14"/></g>
+    <g stroke="#555" fill="#fafafa" stroke-width="2"><rect x="35" y="235" width="230" height="82" rx="14"/><rect x="630" y="139" width="180" height="82" rx="14"/></g>
+    <rect x="855" y="235" width="230" height="82" rx="14" stroke="#a52a2a" fill="#fff6f6" stroke-width="2"/>
+    <g font-size="22"><text x="150" y="80">用户目标</text><text x="150" y="270">网页 / 邮件 / PDF</text><text x="470" y="173">指令层级</text><text x="720" y="188">动作与权限检查</text><text x="970" y="80">低风险且已授权</text><text x="970" y="270">高风险或越界</text></g>
+    <g font-size="16" fill="#555"><text x="150" y="106">已授权指令</text><text x="150" y="296">不可信内容</text><text x="470" y="199">判断冲突</text><text x="970" y="106">执行</text><text x="970" y="296">拒绝 / 请求确认</text></g>
+  </g>
+  <g fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#a)"><path d="M265 86 L350 150"/><path d="M265 276 L350 210"/><path d="M580 180 H620"/><path d="M810 170 L845 105"/><path d="M810 190 L845 255"/></g>
+</svg>

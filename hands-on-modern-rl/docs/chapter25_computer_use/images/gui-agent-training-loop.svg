@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="390" viewBox="0 0 1120 390" role="img" aria-labelledby="title desc">
+  <title id="title">GUI Agent 训练闭环</title>
+  <desc id="desc">任务、截图、策略、动作、环境与奖励组成循环。</desc>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+  <g font-family="Songti SC, Noto Serif CJK SC, serif" text-anchor="middle" fill="#202124">
+    <g stroke="#555" fill="#fafafa" stroke-width="2"><rect x="30" y="45" width="190" height="82" rx="14"/><rect x="285" y="45" width="190" height="82" rx="14"/><rect x="795" y="45" width="190" height="82" rx="14"/><rect x="795" y="245" width="190" height="82" rx="14"/></g>
+    <g stroke="#2457a7" fill="#f5f8ff" stroke-width="2"><rect x="540" y="45" width="190" height="82" rx="14"/><rect x="285" y="245" width="190" height="82" rx="14"/></g>
+    <g font-size="22"><text x="125" y="95">任务描述</text><text x="380" y="80">屏幕截图</text><text x="635" y="80">定位与决策</text><text x="890" y="80">鼠标 / 键盘</text><text x="890" y="280">界面变化</text><text x="380" y="280">任务验证器</text></g>
+    <g font-size="16" fill="#555"><text x="380" y="107">观察 oₜ</text><text x="635" y="107">策略 πθ</text><text x="890" y="107">动作 aₜ</text><text x="890" y="307">环境转移</text><text x="380" y="307">奖励 rₜ</text></g>
+  </g>
+  <g fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#a)"><path d="M220 86 H275"/><path d="M475 86 H530"/><path d="M730 86 H785"/><path d="M890 127 V235"/><path d="M785 286 H485"/><path d="M380 235 V152 H380 V137"/><path d="M440 245 L575 137"/></g>
+</svg>

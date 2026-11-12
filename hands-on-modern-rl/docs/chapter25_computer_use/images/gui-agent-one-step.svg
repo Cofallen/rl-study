@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="430" viewBox="0 0 1120 430" role="img" aria-labelledby="title desc">
+  <title id="title">一次 GUI 操作包含的四个判断</title>
+  <desc id="desc">从截图识别目标、定位坐标、执行点击，再观察新截图验证结果。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker>
+  </defs>
+  <g font-family="Songti SC, Noto Serif CJK SC, serif" fill="#202124">
+    <rect x="35" y="35" width="235" height="285" rx="16" fill="#fafafa" stroke="#555" stroke-width="2"/>
+    <rect x="58" y="70" width="189" height="36" rx="6" fill="#fff" stroke="#9aa0a6"/>
+    <text x="75" y="94" font-size="17" fill="#777">邮箱地址</text>
+    <rect x="58" y="125" width="189" height="36" rx="6" fill="#fff" stroke="#9aa0a6"/>
+    <text x="75" y="149" font-size="17" fill="#777">验证码</text>
+    <rect x="58" y="183" width="189" height="52" rx="9" fill="#2457a7"/>
+    <text x="152" y="216" font-size="20" text-anchor="middle" fill="#fff">提交</text>
+    <circle cx="214" cy="209" r="17" fill="none" stroke="#c0392b" stroke-width="3"/>
+    <path d="M231 192 L261 162" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="152" y="285" font-size="16" text-anchor="middle" fill="#666">观察 oₜ：当前截图</text>
+
+    <g text-anchor="middle">
+      <rect x="335" y="45" width="205" height="86" rx="14" fill="#f5f8ff" stroke="#2457a7" stroke-width="2"/>
+      <text x="438" y="79" font-size="21">1. 识别目标</text>
+      <text x="438" y="108" font-size="16" fill="#555">“提交”是下一步对象</text>
+
+      <rect x="335" y="175" width="205" height="86" rx="14" fill="#f5f8ff" stroke="#2457a7" stroke-width="2"/>
+      <text x="438" y="209" font-size="21">2. 定位动作</text>
+      <text x="438" y="238" font-size="16" fill="#555">click(214, 209)</text>
+
+      <rect x="595" y="175" width="205" height="86" rx="14" fill="#fafafa" stroke="#555" stroke-width="2"/>
+      <text x="698" y="209" font-size="21">3. 环境执行</text>
+      <text x="698" y="238" font-size="16" fill="#555">页面加载或弹出错误</text>
+
+      <rect x="855" y="175" width="225" height="86" rx="14" fill="#f5f8ff" stroke="#2457a7" stroke-width="2"/>
+      <text x="968" y="209" font-size="21">4. 验证结果</text>
+      <text x="968" y="238" font-size="16" fill="#555">新截图是否接近目标</text>
+    </g>
+
+    <g fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#arrow)">
+      <path d="M270 120 H325"/>
+      <path d="M438 131 V165"/>
+      <path d="M540 218 H585"/>
+      <path d="M800 218 H845"/>
+      <path d="M968 271 V340 H438 V271"/>
+    </g>
+    <text x="703" y="374" font-size="17" text-anchor="middle" fill="#555">若页面没有按预期变化，下一步必须重新观察和纠错</text>
+  </g>
+</svg>

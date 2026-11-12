@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="290" viewBox="0 0 760 290" role="img" aria-labelledby="title desc">
+  <title id="title">Trajectory expectation example</title>
+  <desc id="desc">Three possible trajectories from one state with probabilities and returns, illustrating expected state value.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#2563eb"/></marker>
+    <style>.box{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1.5}.start{fill:#ecfeff;stroke:#0891b2;stroke-width:2}.node{fill:#fff7ed;stroke:#ea580c;stroke-width:2}.txt{font:15px system-ui,sans-serif;fill:#111827}.title{font:700 18px system-ui,sans-serif;fill:#111827}.math{font:17px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#111827}.ret{font:600 15px system-ui,sans-serif;fill:#dc2626}.arrow{stroke:#2563eb;stroke-width:2.5;fill:none;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect x="20" y="20" width="720" height="250" rx="18" class="box"/>
+  <circle cx="115" cy="145" r="42" class="start"/>
+  <text x="115" y="140" text-anchor="middle" class="title">state s</text>
+  <text x="115" y="162" text-anchor="middle" class="txt">start</text>
+  <rect x="285" y="52" width="175" height="54" rx="10" class="node"/>
+  <rect x="285" y="118" width="175" height="54" rx="10" class="node"/>
+  <rect x="285" y="184" width="175" height="54" rx="10" class="node"/>
+  <path d="M155 126 L280 79" class="arrow"/><path d="M158 145 L280 145" class="arrow"/><path d="M155 164 L280 211" class="arrow"/>
+  <text x="215" y="83" class="txt">p=0.5</text><text x="215" y="138" class="txt">p=0.3</text><text x="215" y="215" class="txt">p=0.2</text>
+  <text x="303" y="75" class="txt">trajectory A</text><text x="395" y="75" class="ret">G=8</text>
+  <text x="303" y="141" class="txt">trajectory B</text><text x="395" y="141" class="ret">G=4</text>
+  <text x="303" y="207" class="txt">trajectory C</text><text x="395" y="207" class="ret">G=-2</text>
+  <text x="510" y="103" class="math">vπ(s)=E[G|S=s]</text>
+  <text x="510" y="140" class="math">=0.5×8 + 0.3×4</text>
+  <text x="510" y="170" class="math"> + 0.2×(-2)</text>
+  <text x="510" y="207" class="math">= 4.8</text>
+</svg>

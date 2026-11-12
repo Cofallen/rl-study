@@ -1,0 +1,43 @@
+# Global dependency summary (merged and deduplicated across all chapters)
+# It is recommended to install dependencies per chapter to avoid unnecessary installs
+
+# Basic scientific computing
+numpy>=1.24.0
+matplotlib>=3.7.0
+
+# Deep learning
+torch>=2.0.0
+
+# Reinforcement learning environments
+gymnasium[classic-control]>=0.29.0
+gymnasium[box2d]>=0.29.0
+gymnasium[mujoco]>=0.29.0
+gymnasium[atari,accept-rom-license]>=1.0.0
+ale-py>=0.10.0
+opencv-python>=4.8.0
+imageio>=2.30.0
+pyboy>=2.0.0
+
+# Reinforcement learning algorithm libraries
+stable-baselines3>=2.0.0
+
+# Large language models and alignment
+transformers==4.57.3
+trl==0.24.0
+datasets==4.4.1
+accelerate==1.10.1
+modelscope>=1.18.0
+pandas>=2.0.0
+
+# Image processing (VLM chapter)
+Pillow>=10.0.0
+
+# Tools (Agentic RL)
+json5>=0.9.0
+openai>=1.0.0
+
+# Visualization and logging
+tensorboard>=2.14.0
+swanlab[dashboard]>=0.3.0
+rich>=13.0.0
+tqdm>=4.65.0
